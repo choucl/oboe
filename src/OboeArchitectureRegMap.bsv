@@ -4,13 +4,13 @@ import OboeTypeDef::*;
 
 interface OboeArchitectureRegMap;
   method ActionValue#(Tag) commit(ArchRegId index, Tag commit_ptr);
-  method Vector#(NumRegs, Reg#(Tag)) forward;  // forward to FRM
+  method Vector#(NumArchRegs, Reg#(Tag)) forward;  // forward to FRM
 endinterface
 
 module mkOboeArchitectureRegMap(OboeArchitectureRegMap);
-  Vector #(NumRegs, Reg#(Tag)) tagVector;
+  Vector #(NumArchRegs, Reg#(Tag)) tagVector;
 
-  for (Integer i = 0; i < valueOf(NumRegs); i = i + 1) begin
+  for (Integer i = 0; i < kNumArchRegs; i = i + 1) begin
     tagVector[i] <- mkReg(fromInteger(i));
   end
 
