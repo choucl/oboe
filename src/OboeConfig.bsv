@@ -1,3 +1,4 @@
 package OboeConfig;
-typedef 64 PhysicalRegFileSize;
+typedef 64 NumPhysicalRegs;
+Integer kNumPhysicalRegs = valueOf(NumPhysicalRegs);
 endpackage
