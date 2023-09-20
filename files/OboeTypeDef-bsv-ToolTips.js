@@ -1,0 +1,1 @@
+﻿NDContentPage.OnToolTipsLoaded({18:"<div class=\"NDToolTip TType LBluespecSystemVerilog\"><div class=\"TTSummary\">Number of architectural registers</div></div>",24:"<div class=\"NDToolTip TType LBluespecSystemVerilog\"><div class=\"TTSummary\">Pointer to the physical register or ROB, used for renaming</div></div>"});

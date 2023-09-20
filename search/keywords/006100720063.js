@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("arc",["Type"],[["ArchRegId",,[[,,,,0,"File:OboeTypeDef.bsv:ArchRegId"]]]]);

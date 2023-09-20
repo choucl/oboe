@@ -1,0 +1,1 @@
+﻿NDSummary.OnToolTipsLoaded("File:OboeConfig.bsv",{2:"<div class=\"NDToolTip TType LBluespecSystemVerilog\"><div class=\"TTSummary\">Number of physical registers</div></div>",4:"<div class=\"NDToolTip TConstant LBluespecSystemVerilog\"><div class=\"TTSummary\">Integer value of NumPhysicalRegs</div></div>"});
