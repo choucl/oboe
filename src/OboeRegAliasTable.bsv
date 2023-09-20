@@ -9,13 +9,13 @@ import OboeArchitectureRegMap::*;
 // Interface: OboeRegAliasTable
 interface OboeRegAliasTable;
   // Method: lookup
-  //   See <OboeFutureRegMap.lookup>
+  //   See <OboeFutureRegMap.lookup>.
   method RegMapEntry lookup(ArchRegId index);
   // Method: rename
-  //   See <OboeFutureRegMap.rename>
+  //   See <OboeFutureRegMap.rename>.
   method Action rename(ArchRegId index, Tag value);
   // Method: commit
-  //   See <OboeArchitectureRegMap.commit>
+  //   See <OboeArchitectureRegMap.commit>.
   method ActionValue#(Tag) commit(ArchRegId index, Tag commit_ptr);
   // Method: restore
   //   Restore the future register map with the architecture register map. The method is used 

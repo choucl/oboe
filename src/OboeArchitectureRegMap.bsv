@@ -25,6 +25,10 @@ interface OboeArchitectureRegMap;
   method Vector#(NumArchRegs, Reg#(Tag)) forward;  // forward to FRM
 endinterface
 
+// Module: mkOboeArchitectureRegMap
+//   The architecture register map is in charge of maintaining the architectural state of all the
+//   logical registers. Logical registers map to the physical registers by looking up the
+//   tag_vector. tag_vector is forwarded to the <mkOboeFutureRegMap> when restoring.
 module mkOboeArchitectureRegMap(OboeArchitectureRegMap);
   Vector #(NumArchRegs, Reg#(Tag)) tagVector;
 

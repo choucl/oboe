@@ -1,11 +1,11 @@
 package OboeConfig;
 
 // Typedef: NumPhysicalRegs
-//   Number of physical registers
+//   Number of physical registers.
 typedef 64 NumPhysicalRegs;
 
 // Constant: kNumPhysicalRegs
-//   Integer value of <NumPhysicalRegs>
+//   Integer value of <NumPhysicalRegs>.
 Integer kNumPhysicalRegs = valueOf(NumPhysicalRegs);
 
 endpackage

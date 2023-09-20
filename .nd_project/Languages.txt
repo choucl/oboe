@@ -32,6 +32,8 @@ Language: Bluespec SystemVerilog
    Module Prototype Ender: ;
    Interface Prototype Ender: ;
    Tagged Union Prototype Ender: ;
+   Type Prototype Ender: ;
+   Constant Prototype Ender: ;
 
 
 # These settings define the languages Natural Docs knows how to parse.  You
