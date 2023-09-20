@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("BluespecSystemVerilogModule:mkOboeArchitectureRegMap","mkOboeArchitectureRegMap");NDSummary.OnSummaryLoaded("BluespecSystemVerilogModule:mkOboeArchitectureRegMap",[["Bluespec SystemVerilog","BluespecSystemVerilog"]],[["Module","Class"]],[[16,0,0,"mkOboeArchitectureRegMap"]]);
