@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("for",["Function"],[["forward",,[["OboeArchitectureRegMap",,,,0,"File:OboeArchitectureRegMap.bsv:OboeArchitectureRegMap.forward","BluespeSystemVerilogClass:OboeArchitectureRegMap:forward"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("for",["Method"],[["forward",,[["OboeArchitectureRegMap",,,,0,"File:OboeArchitectureRegMap.bsv:OboeArchitectureRegMap.forward","BluespecSystemVerilogClass:OboeArchitectureRegMap:forward"]]]]);

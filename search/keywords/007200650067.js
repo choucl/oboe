@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("reg",["Struct"],[["RegMapEntry",,[[,,,,0,"File:OboeFutureRegMap.bsv:RegMapEntry","BluespeSystemVerilogClass:RegMapEntry"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("reg",["Struct"],[["RegMapEntry",,[[,,,,0,"File:OboeFutureRegMap.bsv:RegMapEntry","BluespecSystemVerilogClass:RegMapEntry"]]]]);

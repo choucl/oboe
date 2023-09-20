@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("mko",["Class"],[["mkOboeFutureRegMap",,[[,,,,0,"File:OboeFutureRegMap.bsv:mkOboeFutureRegMap","BluespecSystemVerilogModule:mkOboeFutureRegMap"]]],["mkOboeRegAliasTable",,[[,,,,0,"File:OboeRegAliasTable.bsv:mkOboeRegAliasTable","BluespecSystemVerilogModule:mkOboeRegAliasTable"]]]]);
