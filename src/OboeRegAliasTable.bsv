@@ -38,4 +38,5 @@ module mkOboeRegAliasTable(OboeRegAliasTable);
     frm.restore(arm.forward);
   endmethod
 endmodule
+
 endpackage

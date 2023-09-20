@@ -1,5 +1,7 @@
 package OboeFutureRegMap;
+
 import Vector::*;
+
 import OboeTypeDef::*;
 
 // Struct: RegMapEntry
@@ -24,7 +26,6 @@ interface OboeFutureRegMap;
   // Returns:
   //   <RegMapEntry> for the corresponding index.
   method RegMapEntry lookup(ArchRegId index);
-
   // Method: rename
   //   Rename the future register map entry with the given tag.
   //
@@ -32,7 +33,6 @@ interface OboeFutureRegMap;
   //   index - Architectural register index to look up in future register map.
   //   value - Tag to rename.
   method Action rename(ArchRegId index, Tag value);
-
   // Method: restore
   //   Update all the entries in future register map with entries in architectural register map.
   //
