@@ -1,5 +1,7 @@
 package OboeRegAliasTable;
+
 import Vector::*;
+
 import OboeTypeDef::*;
 import OboeFutureRegMap::*;
 import OboeArchitectureRegMap::*;

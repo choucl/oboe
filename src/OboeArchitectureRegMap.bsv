@@ -1,5 +1,7 @@
 package OboeArchitectureRegMap;
+
 import Vector::*;
+
 import OboeTypeDef::*;
 
 // Interface: OboeArchitectureRegMap
@@ -7,9 +9,9 @@ interface OboeArchitectureRegMap;
   // Method: commit
   //   Update the tag in architectural register map and return the old tag.
   //
-  // Variable:
-  //   index - Architectural register index to look up in architectural register map.
-  //   commit_ptr - The commit tag to be stored
+  // Parameter:
+  //   index      - Architectural register index to look up in architectural register map.
+  //   commit_ptr - The commit tag to be stored.
   //
   // Returns:
   //   The old tag in the given index.
@@ -43,4 +45,5 @@ module mkOboeArchitectureRegMap(OboeArchitectureRegMap);
   method forward = tagVector;
 
 endmodule
+
 endpackage

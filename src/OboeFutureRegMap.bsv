@@ -7,7 +7,7 @@ import OboeTypeDef::*;
 //
 // Variable:
 //   isOutdated - Indicates the register has been renamed 
-//   tag - The pointer for physical register file
+//   tag        - The pointer for physical register file
 typedef struct {
   Bool isOutdated;
   Tag tag;
@@ -18,7 +18,7 @@ interface OboeFutureRegMap;
   // Method: lookup
   //   Lookup the tag for physical register file in future register map.
   //
-  // Variable:
+  // Parameter:
   //   index - Architectural register index to look up in future register map.
   //
   // Returns:
@@ -28,7 +28,7 @@ interface OboeFutureRegMap;
   // Method: rename
   //   Rename the future register map entry with the given tag.
   //
-  // Variable:
+  // Parameter:
   //   index - Architectural register index to look up in future register map.
   //   value - Tag to rename.
   method Action rename(ArchRegId index, Tag value);
@@ -36,7 +36,7 @@ interface OboeFutureRegMap;
   // Method: restore
   //   Update all the entries in future register map with entries in architectural register map.
   //
-  // Variable:
+  // Parameter:
   //   arm - The whole architectural register map vector.
   method Action restore(Vector #(NumArchRegs, Reg#(Tag)) arm);
 endinterface
@@ -75,4 +75,5 @@ module mkOboeFutureRegMap(OboeFutureRegMap);
   endmethod
 
 endmodule
+
 endpackage
