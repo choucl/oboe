@@ -1,0 +1,1 @@
+﻿NDContentPage.OnToolTipsLoaded({5:"<div class=\"NDToolTip TStruct LBluespeSystemVerilog\"><div class=\"TTSummary\">Entry for future register map.</div></div>"});

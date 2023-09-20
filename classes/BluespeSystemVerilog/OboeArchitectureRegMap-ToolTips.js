@@ -1,0 +1,1 @@
+﻿NDContentPage.OnToolTipsLoaded({10:"<div class=\"NDToolTip TFunction LBluespeSystemVerilog\"><div class=\"TTSummary\">Update all the entries in future register map with entries in architectural register map.</div></div>"});

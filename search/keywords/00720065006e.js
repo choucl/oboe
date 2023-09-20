@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ren",["Function"],[["rename",,[["OboeFutureRegMap",,,,0,"File:OboeFutureRegMap.bsv:OboeFutureRegMap.rename","BluespeSystemVerilogClass:OboeFutureRegMap:rename"],["OboeRegAliasTable",,,,0,"File:OboeRegAliasTable.bsv:OboeRegAliasTable.rename","BluespeSystemVerilogClass:OboeRegAliasTable:rename"]]]]);

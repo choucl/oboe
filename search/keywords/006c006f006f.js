@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("loo",["Function"],[["lookup",,[["OboeFutureRegMap",,,,0,"File:OboeFutureRegMap.bsv:OboeFutureRegMap.lookup","BluespeSystemVerilogClass:OboeFutureRegMap:lookup"],["OboeRegAliasTable",,,,0,"File:OboeRegAliasTable.bsv:OboeRegAliasTable.lookup","BluespeSystemVerilogClass:OboeRegAliasTable:lookup"]]]]);
