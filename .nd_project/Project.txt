@@ -68,7 +68,7 @@ Title: oboe
 # Source Code
 # ------------------------------------------------------------------------
 
-Source Folder: ../src
+Source Folder: ../../src
 
 
 # This is where you tell Natural Docs which folders it should scan for source
