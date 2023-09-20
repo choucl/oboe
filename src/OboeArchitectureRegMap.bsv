@@ -10,12 +10,12 @@ interface OboeArchitectureRegMap;
   //   Update the tag in architectural register map and return the old tag.
   //
   // Parameter:
-  //   index      - Architectural register index to look up in architectural register map.
+  //   rd         - Destination register to be committed.
   //   commit_ptr - The commit tag to be stored.
   //
   // Returns:
-  //   The old tag in the given index.
-  method ActionValue#(Tag) commit(ArchRegId index, Tag commit_ptr);
+  //   The old tag of the destination register.
+  method ActionValue#(Tag) commit(ArchRegId rd, Tag commit_ptr);
   // Method: forward
   //   Return the whole architectural register map for restoring future register map.
   //   See <OboeFutureRegMap.restore>.
@@ -30,23 +30,23 @@ endinterface
 //   logical registers. Logical registers map to the physical registers by looking up the
 //   tag_vector. tag_vector is forwarded to the <mkOboeFutureRegMap> when restoring.
 module mkOboeArchitectureRegMap(OboeArchitectureRegMap);
-  Vector #(NumArchRegs, Reg#(Tag)) tagVector;
+  Vector #(NumArchRegs, Reg#(Tag)) tag_vector;
 
   for (Integer i = 0; i < kNumArchRegs; i = i + 1) begin
-    tagVector[i] <- mkReg(fromInteger(i));
+    tag_vector[i] <- mkReg(fromInteger(i));
   end
 
-  method ActionValue#(Tag) commit(ArchRegId index, Tag commit_ptr);
-    if (index == 0) begin
+  method ActionValue#(Tag) commit(ArchRegId rd, Tag commit_ptr);
+    if (rd == 0) begin
       return 0;
     end else begin
-      Tag tmp_tag = tagVector[index];
-      tagVector[index] <= commit_ptr;
+      Tag tmp_tag = tag_vector[rd];
+      tag_vector[rd] <= commit_ptr;
       return tmp_tag;
     end
   endmethod
 
-  method forward = tagVector;
+  method forward = tag_vector;
 
 endmodule
 

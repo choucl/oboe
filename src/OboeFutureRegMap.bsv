@@ -30,9 +30,9 @@ interface OboeFutureRegMap;
   //   Rename the future register map entry with the given tag.
   //
   // Parameter:
-  //   index - Architectural register index to look up in future register map.
-  //   value - Tag to rename.
-  method Action rename(ArchRegId index, Tag value);
+  //   rd  - The ID of the destination register to be renamed
+  //   tag - Tag to rename.
+  method Action rename(ArchRegId rd, Tag tag);
   // Method: restore
   //   Update all the entries in future register map with entries in architectural register map.
   //
@@ -60,10 +60,10 @@ module mkOboeFutureRegMap(OboeFutureRegMap);
     end
   endmethod
 
-  method Action rename(ArchRegId index, Tag value);
-    if (index != 0) begin
-      outdated_vector[index] <= True;
-      tag_vector[index] <= value;
+  method Action rename(ArchRegId rd, Tag tag);
+    if (rd != 0) begin
+      outdated_vector[rd] <= True;
+      tag_vector[rd] <= tag;
     end
   endmethod
 

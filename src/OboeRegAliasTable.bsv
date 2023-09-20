@@ -34,9 +34,7 @@ module mkOboeRegAliasTable(OboeRegAliasTable);
   method lookup = frm.lookup;
   method rename = frm.rename;
   method commit = arm.commit;
-  method Action restore();
-    frm.restore(arm.forward);
-  endmethod
+  method Action restore() = frm.restore(arm.forward);
 endmodule
 
 endpackage
