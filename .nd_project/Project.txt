@@ -1,4 +1,6 @@
-﻿Format: 2.3
+# There are 2 errors in this file.  Search for ERROR to find them.
+
+Format: 2.3
 
 # This is the main file you use to configure Natural Docs for your project.
 

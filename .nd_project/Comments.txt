@@ -21,6 +21,36 @@
 # Comment Types
 # ------------------------------------------------------------------------
 
+Comment Type: Tagged Union
+
+   Plural Display Name: Tagged Union
+
+   Keywords:
+      tagged union
+
+
+Comment Type: Method
+
+   Plural Display Name: Method
+
+   Flags: Code
+
+   Keywords:
+      method
+
+
+Alter Comment Type: Class
+
+   Display Name: Module
+   Plural Display Name: Module
+
+   Scope: Start
+   Flags: Code, Variable Type, Module Hierarchy
+
+   Keywords:
+      module, modules
+
+
 # Each Natural Docs comment has a corresponding type which determine its
 # behavior.  You can define your own here or override the settings of the
 # existing ones.

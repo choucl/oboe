@@ -19,12 +19,19 @@
 # ------------------------------------------------------------------------
 # The syntax reference is after the definitions.
 
-Language: BluespeSystemVerilog
+Language: Bluespec SystemVerilog
 
    Extension: bsv
 
    Line Comment: //
    Block Comment: /* */
+
+   Function Prototype Enders: ; =
+   Class Prototype Ender: ;
+   Method Prototype Ender: ;
+   Module Prototype Ender: ;
+   Interface Prototype Ender: ;
+   Tagged Union Prototype Ender: ;
 
 
 # These settings define the languages Natural Docs knows how to parse.  You
