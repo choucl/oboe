@@ -1,0 +1,30 @@
+name: Deploy Natural Docs
+
+on:
+  push:
+   branches:
+     - main
+
+jobs:
+  build:
+    name: Build and deploy natural docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setting Environment
+        run: |
+          sudo apt install -qq mono-complete
+          wget https://www.naturaldocs.org/download/natural_docs/2.3/Natural_Docs_2.3.zip -O /tmp/ND.zip
+          unzip /tmp/ND.zip -d /tmp
+          mkdir build
+          mkdir build/docs
+          mkdir build/config
+          cp -r .nd_project/* build/config
+      - name: Build Document
+        run: |
+          mono /tmp/Natural\ Docs/NaturalDocs.exe build/config
+      - name: Deploy github page
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build/docs
