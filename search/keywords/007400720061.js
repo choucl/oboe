@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("tra",["Type"],[["TrapCause",,[[,,,,0,"File:OboeTypeDef.bsv:TrapCause"]]]]);

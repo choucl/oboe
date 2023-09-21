@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("typ",["Section"],[["type",,[[,"Decoder type definitions",,,0,"File:OboeTypeDef.bsv:Decoder_type_definitions"]]]]);
