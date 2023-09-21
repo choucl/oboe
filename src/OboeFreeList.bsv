@@ -37,7 +37,7 @@ module mkOboeFreeList (OboeFreeList);
     (i >= kNumArchRegs && i < kNumPhysicalRegs) ? fromInteger(i) + 1 : fromInteger(i);
 
   // Object: next
-  //   Vector of registers to store the next free entry
+  //   Vector of registers to store the next free entry.
   Vector#(NumPhysicalRegs, Reg#(Tag)) next <- mapM(mkReg, map(genInitialValue, genVector));
 
   // Function: isInUse
@@ -70,22 +70,6 @@ module mkOboeFreeList (OboeFreeList);
   // Bool: is_full
   //   Entries are used up when <free_ptr> reaches <null_ptr>.
   Bool is_full = free_ptr == null_ptr;
-
-  rule show;
-    $display("===================================");
-    for (Integer i = 0; i < kNumPhysicalRegs; i = i + 1) begin
-      if (isInUse(fromInteger(i))) begin
-        $write("next[%d] = in-use\n", i);
-      end else if (fromInteger(i) == free_ptr) begin
-        $write("next[%d] = %d <- free\n", i, next[i]);
-      end else if (fromInteger(i) == null_ptr) begin
-        $write("next[%d] = %d <- null\n", i, next[i]);
-      end else begin
-        $write("next[%d] = %d\n", i, next[i]);
-      end
-    end
-    $display("===================================");
-  endrule
 
   method ActionValue#(Tag) allocate() if (!is_full);
     // Advance the free pointer
