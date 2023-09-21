@@ -13,7 +13,8 @@ interface OboeFreeList;
   // Method: allocate
   //   Allocate an entry from the ROB or physical register file.
   //
-  // Return: Tag to the allocated entry.
+  // Return:
+  //   Tag to the allocated entry.
   method ActionValue#(Tag) allocate();
   // Method: commitAndFree
   //   Commit an entry and free an entry simultaneously.
@@ -22,7 +23,8 @@ interface OboeFreeList;
   //   commit_ptr - Tag to the entry to commit.
   //   to_free    - Tag to the entry to be freed.
   //
-  // Return: Tag of the entry to commit next.
+  // Return:
+  //   Tag of the entry to commit next.
   method ActionValue#(Tag) commitAndFree(Tag commit_ptr, Tag to_free);
 endinterface
 
@@ -30,8 +32,8 @@ endinterface
 //   Free list implementation to maintain a list of free ROB/physical register file entries.
 module mkOboeFreeList (OboeFreeList);
   // Function: genInitialValue
-  //   Entries from 0 ~ (kNumArchRegs - 1) are allocated to the architectural registers when reset.
-  //   Therefore the free list starts from kNumArchRegs to (kNumPhysicalRegs - 1) with every entry
+  //   Entries from 0 ~ kNumArchRegs - 1 are allocated to the architectural registers when reset.
+  //   Therefore the free list starts from kNumArchRegs to kNumPhysicalRegs - 1 with every entry
   //   points to the next entry. The tag of in-use registers is assigned to its register id.
   function Tag genInitialValue(Integer i) =
     (i >= kNumArchRegs && i < kNumPhysicalRegs) ? fromInteger(i) + 1 : fromInteger(i);

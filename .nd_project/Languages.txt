@@ -27,6 +27,7 @@ Language: Bluespec SystemVerilog
    Block Comment: /* */
 
    Function Prototype Enders: ; =
+   Variable Prototype Enders: ;
    Class Prototype Ender: ;
    Method Prototype Ender: ;
    Module Prototype Ender: ;
