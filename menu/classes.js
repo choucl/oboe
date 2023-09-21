@@ -1,1 +1,1 @@
-﻿NDMenu.OnSectionLoaded("classes.js",[[1,"OboeArchitectureRegMap"],[1,"OboeFutureRegMap"],[1,"OboeRegAliasTable"],[1,"RegMapEntry"]]);
+﻿NDMenu.OnSectionLoaded("classes.js",[[1,"OboeArchitectureRegMap"],[1,"OboeFreeList"],[1,"OboeFutureRegMap"],[1,"OboeRegAliasTable"],[1,"RegMapEntry"]]);
