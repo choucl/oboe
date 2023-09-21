@@ -32,9 +32,9 @@ endinterface
 //   Free list implementation to maintain a list of free ROB/physical register file entries.
 module mkOboeFreeList (OboeFreeList);
   // Function: genInitialValue
-  //   Entries from 0 ~ kNumArchRegs - 1 are allocated to the architectural registers when reset.
-  //   Therefore the free list starts from kNumArchRegs to kNumPhysicalRegs - 1 with every entry
-  //   points to the next entry. The tag of in-use registers is assigned to its register id.
+  //   First kNumArchRegs entries are allocated to the architectural registers when reset. The
+  //   remaining entries has initial value that points to the next entry. The tag of in-use
+  //   entries is assigned to its tag id.
   function Tag genInitialValue(Integer i) =
     (i >= kNumArchRegs && i < kNumPhysicalRegs) ? fromInteger(i) + 1 : fromInteger(i);
 
