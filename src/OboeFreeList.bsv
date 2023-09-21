@@ -91,7 +91,7 @@ module mkOboeFreeList (OboeFreeList);
       // Mark the committed entry as in-use
       markInUse(commit_ptr);
     end else begin
-      dynamicAssert(True, "Conflict in commit_ptr, to_free, and null_ptr");
+      dynamicAssert(False, "Conflict in commit_ptr, to_free, and null_ptr");
     end
     return next[commit_ptr];
   endmethod
