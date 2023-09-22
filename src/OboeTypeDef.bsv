@@ -44,7 +44,7 @@ typedef enum {
   SLL, SRL, SRA,
   AND, OR, XOR,
   LT, LTU
-} AluOp deriving(Bits, Eq);
+} AluOp deriving(Bits, Eq, FShow);
 
 // Enum: AluSrc
 //   Enumerate type of different type of operand combination that uses ALU.
@@ -56,14 +56,14 @@ typedef enum {
 typedef enum {
   Rs1Imm, PcImm, Rs1Rs2,
   Pc4  // PC + 4
-} AluSrc deriving(Bits, Eq);
+} AluSrc deriving(Bits, Eq, FShow);
 
 // Typedef: AluCtrl
 //   Structure that combines the source operand type and ALU opcode
 typedef struct {
   AluOp  op;
   AluSrc src;
-} AluCtrl deriving(Bits, Eq);
+} AluCtrl deriving(Bits, Eq, FShow);
 
 // Enum: BruOp
 //   Enumerate operation that could done by BRU.
@@ -72,7 +72,7 @@ typedef enum {
   EQ, NE,
   LT, LTU,
   GE, GEU
-} BruOp deriving(Bits, Eq);
+} BruOp deriving(Bits, Eq, FShow);
 
 // Enum: BruSrc
 //   Enumerate type of different type of operand combination that uses BRU.
@@ -82,14 +82,14 @@ typedef enum {
 typedef enum {
   PcImm,
   Rs1Imm
-} BruSrc deriving(Bits, Eq);
+} BruSrc deriving(Bits, Eq, FShow);
 
 // Typedef: BruCtrl
 //   Structure that combines the source operand type and BRU opcode
 typedef struct {
   BruOp  op;
   BruSrc src;
-} BruCtrl deriving(Bits, Eq);
+} BruCtrl deriving(Bits, Eq, FShow);
 
 // Enum: CsruOp
 //   Enumerate operation that could done by CSRU.
@@ -101,7 +101,7 @@ typedef enum {
   RW,
   RS,
   RC
-} CsruOp deriving(Bits, Eq);
+} CsruOp deriving(Bits, Eq, FShow);
 
 // Enum: CsruSrc
 //   Enumerate type of different type of source operand that uses CSRU.
@@ -110,21 +110,21 @@ typedef enum {
 //   Uimm - Operation based immediate value.
 typedef enum {
   Rs1, Uimm
-} CsruSrc deriving(Bits, Eq);
+} CsruSrc deriving(Bits, Eq, FShow);
 
 // Typedef: CsruCtrl
 //   Structure that combines the source operand type and CSRU opcode
 typedef struct {
   CsruOp  op;
   CsruSrc src;
-} CsruCtrl deriving(Bits, Eq);
+} CsruCtrl deriving(Bits, Eq, FShow);
 
 // Enum: LsuOp
 //   Enumerate operation that could done by LSU.
 typedef enum {
   LW, LH, LB, LHU, LBU,
   SW, SH, SB
-} LsuOp deriving(Bits, Eq);
+} LsuOp deriving(Bits, Eq, FShow);
 
 // Enum: LsuSrc
 //
@@ -132,14 +132,14 @@ typedef enum {
 //   Rs1Rs2Imm - Operation between two registers and immediate value.
 typedef enum {
   Rs1Imm, Rs1Rs2Imm
-} LsuSrc deriving(Bits, Eq);
+} LsuSrc deriving(Bits, Eq, FShow);
 
 // Typedef: LsuCtrl
 //   Structure that combines the source operand type and LSU opcode
 typedef struct {
   LsuOp  op;
   LsuSrc src;
-} LsuCtrl deriving(Bits, Eq);
+} LsuCtrl deriving(Bits, Eq, FShow);
 
 // Typedef: FunctionUnit
 //   Union tagged structure. Responsible compute unit for a instruction.
@@ -149,14 +149,14 @@ typedef union tagged {
   BruCtrl  BRU;
   CsruCtrl CSRU;
   LsuCtrl  LSU;
-} FunctionUnit deriving(Bits, Eq);
+} FunctionUnit deriving(Bits, Eq, FShow);
 
 // Typedef: TrapCause
 //   Define the trap type and cause
 typedef struct {
   Bool isInterrupt;
   Bit#(31) code;
-} TrapCause;
+} TrapCause deriving(Bits, FShow);
 
 // Typedef: BackendInst
 //   Structure for decoded instruction.
@@ -168,6 +168,6 @@ typedef struct {
   Word              imm;
   FunctionUnit      fu;
   Maybe#(TrapCause) trap;
-} BackendInst;
+} BackendInst deriving(Bits, FShow);
 
 endpackage
