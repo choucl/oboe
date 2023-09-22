@@ -30,6 +30,10 @@ typedef UInt#(TagWidth) Tag;
 //   XLEN-width bit data.
 typedef Bit#(XLEN) Word;
 
+// Typdef: CsrId
+//   Identifier of CSR
+typedef Bit#(12) CsrId;
+
 
 // Section: Decoder type definitions
 
@@ -167,6 +171,7 @@ typedef struct {
   ArchRegId         rd;
   Word              imm;
   FunctionUnit      fu;
+  CsrId             csr;
   Maybe#(TrapCause) trap;
 } BackendInst deriving(Bits, FShow);
 

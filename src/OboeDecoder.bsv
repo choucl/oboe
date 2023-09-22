@@ -53,6 +53,7 @@ Bit#(OpCodeWidth) op_jalr   = 'b1100111;
 Bit#(OpCodeWidth) op_branch = 'b1100011;
 Bit#(OpCodeWidth) op_load   = 'b0000011;
 Bit#(OpCodeWidth) op_store  = 'b0100011;
+Bit#(OpCodeWidth) op_csr    = 'b1110011;
 
 // Interface: OboeDecoder
 interface OboeDecoder;
@@ -110,11 +111,12 @@ module mkOboeDecoder(OboeDecoder);
     endcase
 
     return_inst = BackendInst {
-      pc: 0,
+      pc: ?,
       rs1: unpack(decoded_inst.rs1),
       rs2: 0,
       rd: unpack(decoded_inst.rd),
       imm: i_imm,
+      csr: 0,
       fu: tagged ALU alu_ctrl,
       trap: (isInvalid)? tagged Valid TrapCause {isInterrupt: False, code: 2} : tagged Invalid
     };
@@ -131,11 +133,12 @@ module mkOboeDecoder(OboeDecoder);
     Word u_imm = {inst[31:12], 12'b0};
 
     return_inst = BackendInst {
-      pc: 0,
+      pc: ?,
       rs1: 0,
       rs2: 0,
       rd: unpack(decoded_inst.rd),
       imm: u_imm,
+      csr: 0,
       fu: tagged ALU alu_ctrl,
       trap: tagged Invalid
     };
@@ -152,11 +155,12 @@ module mkOboeDecoder(OboeDecoder);
     Word u_imm = {inst[31:12], 12'b0};
 
     return_inst = BackendInst {
-      pc: 0,
+      pc: ?,
       rs1: 0,
       rs2: 0,
       rd: unpack(decoded_inst.rd),
       imm: u_imm,
+      csr: 0,
       fu: tagged ALU alu_ctrl,
       trap: tagged Invalid
     };
@@ -172,7 +176,7 @@ module mkOboeDecoder(OboeDecoder);
     AluCtrl alu_ctrl = AluCtrl {op: ADD, src: Rs1Rs2};  // default value
 
     Bool isInvalid = False;
-    if (decoded_inst.funct3 != 'b101 || decoded_inst.funct3 != 'b000) begin
+    if (decoded_inst.funct3 != 'b101 && decoded_inst.funct3 != 'b000) begin
       isInvalid = (decoded_inst.funct7 != 0);
     end
 
@@ -201,11 +205,12 @@ module mkOboeDecoder(OboeDecoder);
     endcase
 
     return_inst = BackendInst {
-      pc: 0,
+      pc: ?,
       rs1: unpack(decoded_inst.rs1),
       rs2: unpack(decoded_inst.rs2),
       rd: unpack(decoded_inst.rd),
       imm: 0,
+      csr: 0,
       fu: tagged ALU alu_ctrl,
       trap: (isInvalid)? tagged Valid TrapCause {isInterrupt: False, code: 2} : tagged Invalid
     };
@@ -222,11 +227,12 @@ module mkOboeDecoder(OboeDecoder);
     Word j_imm = signExtend({inst[31], inst[19:12], inst[20], inst[30:21], 1'b0}); 
 
     return_inst = BackendInst {
-      pc: 0,
+      pc: ?,
       rs1: 0,
       rs2: 0,
       rd: unpack(decoded_inst.rd),
       imm: j_imm,
+      csr: 0,
       fu: tagged BRU bru_ctrl,
       trap: tagged Invalid
     };
@@ -243,11 +249,12 @@ module mkOboeDecoder(OboeDecoder);
     Word i_imm = signExtend(inst[31:20]);
 
     return_inst = BackendInst {
-      pc: 0,
+      pc: ?,
       rs1: unpack(decoded_inst.rs1),
       rs2: 0,
       rd: unpack(decoded_inst.rd),
       imm: i_imm,
+      csr: 0,
       fu: tagged BRU bru_ctrl,
       trap: tagged Invalid
     };
@@ -276,11 +283,12 @@ module mkOboeDecoder(OboeDecoder);
     endcase
 
     return_inst = BackendInst {
-      pc: 0,
+      pc: ?,
       rs1: unpack(decoded_inst.rs1),
       rs2: unpack(decoded_inst.rs2),
       rd: 0,
       imm: b_imm,
+      csr: 0,
       fu: tagged BRU bru_ctrl,
       trap: (isInvalid)? tagged Valid TrapCause {isInterrupt: False, code: 2} : tagged Invalid
     };
@@ -308,11 +316,12 @@ module mkOboeDecoder(OboeDecoder);
     endcase
 
     return_inst = BackendInst {
-      pc: 0,
+      pc: ?,
       rs1: unpack(decoded_inst.rs1),
       rs2: 0,
       rd: unpack(decoded_inst.rd),
       imm: i_imm,
+      csr: 0,
       fu: tagged LSU lsu_ctrl,
       trap: (isInvalid)? tagged Valid TrapCause {isInterrupt: False, code: 2} : tagged Invalid
     };
@@ -338,12 +347,46 @@ module mkOboeDecoder(OboeDecoder);
     endcase
 
     return_inst = BackendInst {
-      pc: 0,
+      pc: ?,
       rs1: unpack(decoded_inst.rs1),
       rs2: unpack(decoded_inst.rs2),
       rd: 0,
       imm: s_imm,
+      csr: 0,
       fu: tagged LSU lsu_ctrl,
+      trap: (isInvalid)? tagged Valid TrapCause {isInterrupt: False, code: 2} : tagged Invalid
+    };
+    return return_inst;
+  endfunction
+
+  // Function: opCsrDecode
+  //   Decode the instructions with opcode = CSR
+  function BackendInst opCsrDecode(RawInst inst);
+    IType decoded_inst = unpack(inst);
+
+    BackendInst return_inst;
+    CsruCtrl csru_ctrl = CsruCtrl {op: RW, src: Rs1};  // default value
+
+    Bool isInvalid = False;
+
+    case (decoded_inst.funct3)
+    'b001: csru_ctrl = CsruCtrl {op: RW, src: Rs1};
+    'b010: csru_ctrl = CsruCtrl {op: RS, src: Rs1};
+    'b011: csru_ctrl = CsruCtrl {op: RC, src: Rs1};
+    'b101: csru_ctrl = CsruCtrl {op: RW, src: Uimm};
+    'b110: csru_ctrl = CsruCtrl {op: RS, src: Uimm};
+    'b111: csru_ctrl = CsruCtrl {op: RC, src: Uimm};
+    default: isInvalid = True;
+    endcase
+
+    return_inst = BackendInst {
+      pc: ?,
+      rs1: unpack(decoded_inst.rs1),
+      rs2: 0,
+      rd: unpack(decoded_inst.rd),
+      imm: zeroExtend(unpack(decoded_inst.rs1)),
+      csr: inst[31:20],
+      fu: tagged CSRU csru_ctrl,
       trap: (isInvalid)? tagged Valid TrapCause {isInterrupt: False, code: 2} : tagged Invalid
     };
     return return_inst;
@@ -356,6 +399,7 @@ module mkOboeDecoder(OboeDecoder);
       rs2: 0,
       rd: 0,
       imm: 0,
+      csr: 0,
       fu: tagged ALU AluCtrl {op: ADD, src: Rs1Imm},
       trap: tagged Invalid
     };
@@ -372,6 +416,7 @@ module mkOboeDecoder(OboeDecoder);
     op_branch : return_inst = opBranchDecode(inst);
     op_load   : return_inst = opLoadDecode(inst);
     op_store  : return_inst = opStoreDecode(inst);
+    op_csr    : return_inst = opCsrDecode(inst);
     default   : return_inst.trap = tagged Valid TrapCause {isInterrupt: False, code: 2};
     endcase
 
@@ -383,6 +428,7 @@ module mkOboeDecoder(OboeDecoder);
       return_inst.rs2 = 0;
       return_inst.rd = 0;
       return_inst.imm = 0;
+      return_inst.csr = 0;
     end
     return return_inst;
   endmethod
