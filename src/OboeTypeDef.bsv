@@ -32,7 +32,7 @@ typedef Bit#(XLEN) Word;
 
 // Typdef: CsrId
 //   Identifier of CSR
-typedef Bit#(12) CsrId;
+typedef UInt#(12) CsrId;
 
 
 // Section: Decoder type definitions

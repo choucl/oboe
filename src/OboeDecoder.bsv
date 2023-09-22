@@ -385,7 +385,7 @@ module mkOboeDecoder(OboeDecoder);
       rs2: 0,
       rd: decoded_inst.rd,
       imm: zeroExtend(pack(decoded_inst.rs1)),
-      csr: inst[31:20],
+      csr: unpack(decoded_inst.imm),
       fu: tagged CSRU csru_ctrl,
       trap: (isInvalid)? tagged Valid TrapCause {isInterrupt: False, code: 2} : tagged Invalid
     };
