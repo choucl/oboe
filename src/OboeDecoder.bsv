@@ -5,10 +5,10 @@ import OboeTypeDef::*;
 //   R-type instruction format.
 typedef struct {
   Bit#(7) funct7;
-  Bit#(5) rs2;
-  Bit#(5) rs1;
+  ArchRegId rs2;
+  ArchRegId rs1;
   Bit#(3) funct3;
-  Bit#(5) rd;
+  ArchRegId rd;
   Bit#(7) opcode;
 } RType deriving(Eq, Bits);
 
@@ -16,9 +16,9 @@ typedef struct {
 //   I-type instruction format.
 typedef struct {
   Bit#(12) imm;
-  Bit#(5) rs1;
+  ArchRegId rs1;
   Bit#(3) funct3;
-  Bit#(5) rd;
+  ArchRegId rd;
   Bit#(7) opcode;
 } IType deriving(Eq, Bits);
 
@@ -26,8 +26,8 @@ typedef struct {
 //   S-type instruction format.
 typedef struct {
   Bit#(7) imm2;
-  Bit#(5) rs2;
-  Bit#(5) rs1;
+  ArchRegId rs2;
+  ArchRegId rs1;
   Bit#(3) funct3;
   Bit#(5) imm1;
   Bit#(7) opcode;
@@ -37,7 +37,7 @@ typedef struct {
 //   U-type instruction format.
 typedef struct {
   Bit#(20) imm;
-  Bit#(5) rd;
+  ArchRegId rd;
   Bit#(7) opcode;
 } UType deriving(Eq, Bits);
 
@@ -112,9 +112,9 @@ module mkOboeDecoder(OboeDecoder);
 
     return_inst = BackendInst {
       pc: ?,
-      rs1: unpack(decoded_inst.rs1),
+      rs1: decoded_inst.rs1,
       rs2: 0,
-      rd: unpack(decoded_inst.rd),
+      rd: decoded_inst.rd,
       imm: i_imm,
       csr: 0,
       fu: tagged ALU alu_ctrl,
@@ -136,7 +136,7 @@ module mkOboeDecoder(OboeDecoder);
       pc: ?,
       rs1: 0,
       rs2: 0,
-      rd: unpack(decoded_inst.rd),
+      rd: decoded_inst.rd,
       imm: u_imm,
       csr: 0,
       fu: tagged ALU alu_ctrl,
@@ -158,7 +158,7 @@ module mkOboeDecoder(OboeDecoder);
       pc: ?,
       rs1: 0,
       rs2: 0,
-      rd: unpack(decoded_inst.rd),
+      rd: decoded_inst.rd,
       imm: u_imm,
       csr: 0,
       fu: tagged ALU alu_ctrl,
@@ -206,9 +206,9 @@ module mkOboeDecoder(OboeDecoder);
 
     return_inst = BackendInst {
       pc: ?,
-      rs1: unpack(decoded_inst.rs1),
-      rs2: unpack(decoded_inst.rs2),
-      rd: unpack(decoded_inst.rd),
+      rs1: decoded_inst.rs1,
+      rs2: decoded_inst.rs2,
+      rd: decoded_inst.rd,
       imm: 0,
       csr: 0,
       fu: tagged ALU alu_ctrl,
@@ -230,7 +230,7 @@ module mkOboeDecoder(OboeDecoder);
       pc: ?,
       rs1: 0,
       rs2: 0,
-      rd: unpack(decoded_inst.rd),
+      rd: decoded_inst.rd,
       imm: j_imm,
       csr: 0,
       fu: tagged BRU bru_ctrl,
@@ -250,9 +250,9 @@ module mkOboeDecoder(OboeDecoder);
 
     return_inst = BackendInst {
       pc: ?,
-      rs1: unpack(decoded_inst.rs1),
+      rs1: decoded_inst.rs1,
       rs2: 0,
-      rd: unpack(decoded_inst.rd),
+      rd: decoded_inst.rd,
       imm: i_imm,
       csr: 0,
       fu: tagged BRU bru_ctrl,
@@ -284,8 +284,8 @@ module mkOboeDecoder(OboeDecoder);
 
     return_inst = BackendInst {
       pc: ?,
-      rs1: unpack(decoded_inst.rs1),
-      rs2: unpack(decoded_inst.rs2),
+      rs1: decoded_inst.rs1,
+      rs2: decoded_inst.rs2,
       rd: 0,
       imm: b_imm,
       csr: 0,
@@ -317,9 +317,9 @@ module mkOboeDecoder(OboeDecoder);
 
     return_inst = BackendInst {
       pc: ?,
-      rs1: unpack(decoded_inst.rs1),
+      rs1: decoded_inst.rs1,
       rs2: 0,
-      rd: unpack(decoded_inst.rd),
+      rd: decoded_inst.rd,
       imm: i_imm,
       csr: 0,
       fu: tagged LSU lsu_ctrl,
@@ -348,8 +348,8 @@ module mkOboeDecoder(OboeDecoder);
 
     return_inst = BackendInst {
       pc: ?,
-      rs1: unpack(decoded_inst.rs1),
-      rs2: unpack(decoded_inst.rs2),
+      rs1: decoded_inst.rs1,
+      rs2: decoded_inst.rs2,
       rd: 0,
       imm: s_imm,
       csr: 0,
@@ -381,10 +381,10 @@ module mkOboeDecoder(OboeDecoder);
 
     return_inst = BackendInst {
       pc: ?,
-      rs1: unpack(decoded_inst.rs1),
+      rs1: decoded_inst.rs1,
       rs2: 0,
-      rd: unpack(decoded_inst.rd),
-      imm: zeroExtend(unpack(decoded_inst.rs1)),
+      rd: decoded_inst.rd,
+      imm: zeroExtend(pack(decoded_inst.rs1)),
       csr: inst[31:20],
       fu: tagged CSRU csru_ctrl,
       trap: (isInvalid)? tagged Valid TrapCause {isInterrupt: False, code: 2} : tagged Invalid
