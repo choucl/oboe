@@ -156,7 +156,7 @@ typedef union tagged {
 typedef struct {
   Bool isInterrupt;
   Bit#(31) code;
-} TrapCause;
+} TrapCause deriving(Bits);
 
 // Typedef: BackendInst
 //   Structure for decoded instruction.
@@ -168,6 +168,6 @@ typedef struct {
   Word              imm;
   FunctionUnit      fu;
   Maybe#(TrapCause) trap;
-} BackendInst;
+} BackendInst deriving(Bits);
 
 endpackage
