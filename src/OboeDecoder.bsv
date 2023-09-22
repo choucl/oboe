@@ -74,7 +74,7 @@ endinterface
 module mkOboeDecoder(OboeDecoder);
 
   // Function: opImmDecode
-  //   Decode the instructions with opcode = OP_IMM
+  //   Decode the instructions with opcode = OP_IMM.
   function BackendInst opImmDecode(RawInst inst);
     IType decoded_inst = unpack(inst);
 
@@ -124,7 +124,7 @@ module mkOboeDecoder(OboeDecoder);
   endfunction
 
   // Function: opLuiDecode
-  //   Decode the instructions with opcode = LUI
+  //   Decode the instructions with opcode = LUI.
   function BackendInst opLuiDecode(RawInst inst);
     UType decoded_inst = unpack(inst);
 
@@ -146,7 +146,7 @@ module mkOboeDecoder(OboeDecoder);
   endfunction
 
   // Function: opAuipcDecode
-  //   Decode the instructions with opcode = AUIPC
+  //   Decode the instructions with opcode = AUIPC.
   function BackendInst opAuipcDecode(RawInst inst);
     UType decoded_inst = unpack(inst);
 
@@ -168,7 +168,7 @@ module mkOboeDecoder(OboeDecoder);
   endfunction
 
   // Function: opRDecode
-  //   Decode the instructions with opcode = OP
+  //   Decode the instructions with opcode = OP.
   function BackendInst opRDecode(RawInst inst);
     RType decoded_inst = unpack(inst);
 
@@ -181,27 +181,27 @@ module mkOboeDecoder(OboeDecoder);
     end
 
     case (decoded_inst.funct3)
-    'b000: begin 
-      if (decoded_inst.funct7 == 0)
-        alu_ctrl = AluCtrl {op: ADD, src: Rs1Rs2};
-      else if (decoded_inst.funct7 == 'b00100000)
-        alu_ctrl = AluCtrl {op: SUB, src: Rs1Rs2};
-      else isInvalid = True;
-    end
-    'b010: alu_ctrl = AluCtrl {op: LT, src: Rs1Rs2};
-    'b011: alu_ctrl = AluCtrl {op: LTU, src: Rs1Rs2};
-    'b111: alu_ctrl = AluCtrl {op: AND, src: Rs1Rs2};
-    'b110: alu_ctrl = AluCtrl {op: OR, src: Rs1Rs2};
-    'b100: alu_ctrl = AluCtrl {op: XOR, src: Rs1Rs2};
-    'b001: alu_ctrl = AluCtrl {op: SLL, src: Rs1Rs2};
-    'b101: begin 
-      if (decoded_inst.funct7 == 0)
-        alu_ctrl = AluCtrl {op: SRL, src: Rs1Rs2};
-      else if (decoded_inst.funct7 == 'b00100000)
-        alu_ctrl = AluCtrl {op: SRA, src: Rs1Rs2};
-      else isInvalid = True;
-    end
-    default: isInvalid = True;
+      'b000: begin 
+        if (decoded_inst.funct7 == 0)
+          alu_ctrl = AluCtrl {op: ADD, src: Rs1Rs2};
+        else if (decoded_inst.funct7 == 'b00100000)
+          alu_ctrl = AluCtrl {op: SUB, src: Rs1Rs2};
+        else isInvalid = True;
+      end
+      'b010: alu_ctrl = AluCtrl {op: LT, src: Rs1Rs2};
+      'b011: alu_ctrl = AluCtrl {op: LTU, src: Rs1Rs2};
+      'b111: alu_ctrl = AluCtrl {op: AND, src: Rs1Rs2};
+      'b110: alu_ctrl = AluCtrl {op: OR, src: Rs1Rs2};
+      'b100: alu_ctrl = AluCtrl {op: XOR, src: Rs1Rs2};
+      'b001: alu_ctrl = AluCtrl {op: SLL, src: Rs1Rs2};
+      'b101: begin 
+        if (decoded_inst.funct7 == 0)
+          alu_ctrl = AluCtrl {op: SRL, src: Rs1Rs2};
+        else if (decoded_inst.funct7 == 'b00100000)
+          alu_ctrl = AluCtrl {op: SRA, src: Rs1Rs2};
+        else isInvalid = True;
+      end
+      default: isInvalid = True;
     endcase
 
     return_inst = BackendInst {
@@ -218,7 +218,7 @@ module mkOboeDecoder(OboeDecoder);
   endfunction
   
   // Function: opJalDecode
-  //   Decode the instructions with opcode = JAL
+  //   Decode the instructions with opcode = JAL.
   function BackendInst opJalDecode(RawInst inst);
     UType decoded_inst = unpack(inst);
 
@@ -240,7 +240,7 @@ module mkOboeDecoder(OboeDecoder);
   endfunction
 
   // Function: opJalrDecode
-  //   Decode the instructions with opcode = JALR
+  //   Decode the instructions with opcode = JALR.
   function BackendInst opJalrDecode(RawInst inst);
     IType decoded_inst = unpack(inst);
 
@@ -262,7 +262,7 @@ module mkOboeDecoder(OboeDecoder);
   endfunction
 
   // Function: opBranchDecode
-  //   Decode the instructions with opcode = BRANCH
+  //   Decode the instructions with opcode = BRANCH.
   function BackendInst opBranchDecode(RawInst inst);
     SType decoded_inst = unpack(inst);
 
@@ -273,13 +273,13 @@ module mkOboeDecoder(OboeDecoder);
     Bool isInvalid = False;
 
     case (decoded_inst.funct3)
-    'b000: bru_ctrl = BruCtrl {op: EQ, src: PcImm};
-    'b001: bru_ctrl = BruCtrl {op: NE, src: PcImm};
-    'b100: bru_ctrl = BruCtrl {op: LT, src: PcImm};
-    'b101: bru_ctrl = BruCtrl {op: GE, src: PcImm};
-    'b110: bru_ctrl = BruCtrl {op: LTU, src: PcImm};
-    'b111: bru_ctrl = BruCtrl {op: GEU, src: PcImm};
-    default: isInvalid = True;
+      'b000: bru_ctrl = BruCtrl {op: EQ, src: PcImm};
+      'b001: bru_ctrl = BruCtrl {op: NE, src: PcImm};
+      'b100: bru_ctrl = BruCtrl {op: LT, src: PcImm};
+      'b101: bru_ctrl = BruCtrl {op: GE, src: PcImm};
+      'b110: bru_ctrl = BruCtrl {op: LTU, src: PcImm};
+      'b111: bru_ctrl = BruCtrl {op: GEU, src: PcImm};
+      default: isInvalid = True;
     endcase
 
     return_inst = BackendInst {
@@ -296,7 +296,7 @@ module mkOboeDecoder(OboeDecoder);
   endfunction
 
   // Function: opLoadDecode
-  //   Decode the instructions with opcode = LOAD
+  //   Decode the instructions with opcode = LOAD.
   function BackendInst opLoadDecode(RawInst inst);
     IType decoded_inst = unpack(inst);
 
@@ -307,12 +307,12 @@ module mkOboeDecoder(OboeDecoder);
     Bool isInvalid = False;
 
     case (decoded_inst.funct3)
-    'b000: lsu_ctrl = LsuCtrl {op: LB, src: Rs1Imm};
-    'b001: lsu_ctrl = LsuCtrl {op: LH, src: Rs1Imm};
-    'b010: lsu_ctrl = LsuCtrl {op: LW, src: Rs1Imm};
-    'b100: lsu_ctrl = LsuCtrl {op: LBU, src: Rs1Imm};
-    'b101: lsu_ctrl = LsuCtrl {op: LHU, src: Rs1Imm};
-    default: isInvalid = True;
+      'b000: lsu_ctrl = LsuCtrl {op: LB, src: Rs1Imm};
+      'b001: lsu_ctrl = LsuCtrl {op: LH, src: Rs1Imm};
+      'b010: lsu_ctrl = LsuCtrl {op: LW, src: Rs1Imm};
+      'b100: lsu_ctrl = LsuCtrl {op: LBU, src: Rs1Imm};
+      'b101: lsu_ctrl = LsuCtrl {op: LHU, src: Rs1Imm};
+      default: isInvalid = True;
     endcase
 
     return_inst = BackendInst {
@@ -329,7 +329,7 @@ module mkOboeDecoder(OboeDecoder);
   endfunction
 
   // Function: opStoreDecode
-  //   Decode the instructions with opcode = STORE
+  //   Decode the instructions with opcode = STORE.
   function BackendInst opStoreDecode(RawInst inst);
     SType decoded_inst = unpack(inst);
 
@@ -340,10 +340,10 @@ module mkOboeDecoder(OboeDecoder);
     Bool isInvalid = False;
 
     case (decoded_inst.funct3)
-    'b000: lsu_ctrl = LsuCtrl {op: SB, src: Rs1Rs2Imm};
-    'b001: lsu_ctrl = LsuCtrl {op: SH, src: Rs1Rs2Imm};
-    'b010: lsu_ctrl = LsuCtrl {op: SW, src: Rs1Rs2Imm};
-    default: isInvalid = True;
+      'b000: lsu_ctrl = LsuCtrl {op: SB, src: Rs1Rs2Imm};
+      'b001: lsu_ctrl = LsuCtrl {op: SH, src: Rs1Rs2Imm};
+      'b010: lsu_ctrl = LsuCtrl {op: SW, src: Rs1Rs2Imm};
+      default: isInvalid = True;
     endcase
 
     return_inst = BackendInst {
@@ -360,7 +360,7 @@ module mkOboeDecoder(OboeDecoder);
   endfunction
 
   // Function: opCsrDecode
-  //   Decode the instructions with opcode = CSR
+  //   Decode the instructions with opcode = CSR.
   function BackendInst opCsrDecode(RawInst inst);
     IType decoded_inst = unpack(inst);
 
@@ -370,13 +370,13 @@ module mkOboeDecoder(OboeDecoder);
     Bool isInvalid = False;
 
     case (decoded_inst.funct3)
-    'b001: csru_ctrl = CsruCtrl {op: RW, src: Rs1};
-    'b010: csru_ctrl = CsruCtrl {op: RS, src: Rs1};
-    'b011: csru_ctrl = CsruCtrl {op: RC, src: Rs1};
-    'b101: csru_ctrl = CsruCtrl {op: RW, src: Uimm};
-    'b110: csru_ctrl = CsruCtrl {op: RS, src: Uimm};
-    'b111: csru_ctrl = CsruCtrl {op: RC, src: Uimm};
-    default: isInvalid = True;
+      'b001: csru_ctrl = CsruCtrl {op: RW, src: Rs1};
+      'b010: csru_ctrl = CsruCtrl {op: RS, src: Rs1};
+      'b011: csru_ctrl = CsruCtrl {op: RC, src: Rs1};
+      'b101: csru_ctrl = CsruCtrl {op: RW, src: Uimm};
+      'b110: csru_ctrl = CsruCtrl {op: RS, src: Uimm};
+      'b111: csru_ctrl = CsruCtrl {op: RC, src: Uimm};
+      default: isInvalid = True;
     endcase
 
     return_inst = BackendInst {
@@ -407,17 +407,17 @@ module mkOboeDecoder(OboeDecoder);
     Bit#(OpCodeWidth) opcode = inst[6:0];
 
     case (opcode)
-    op_imm    : return_inst = opImmDecode(inst);
-    op_r      : return_inst = opRDecode(inst);
-    op_lui    : return_inst = opLuiDecode(inst);
-    op_auipc  : return_inst = opAuipcDecode(inst);
-    op_jal    : return_inst = opJalDecode(inst);
-    op_jalr   : return_inst = opJalrDecode(inst);
-    op_branch : return_inst = opBranchDecode(inst);
-    op_load   : return_inst = opLoadDecode(inst);
-    op_store  : return_inst = opStoreDecode(inst);
-    op_csr    : return_inst = opCsrDecode(inst);
-    default   : return_inst.trap = tagged Valid TrapCause {isInterrupt: False, code: 2};
+      op_imm    : return_inst = opImmDecode(inst);
+      op_r      : return_inst = opRDecode(inst);
+      op_lui    : return_inst = opLuiDecode(inst);
+      op_auipc  : return_inst = opAuipcDecode(inst);
+      op_jal    : return_inst = opJalDecode(inst);
+      op_jalr   : return_inst = opJalrDecode(inst);
+      op_branch : return_inst = opBranchDecode(inst);
+      op_load   : return_inst = opLoadDecode(inst);
+      op_store  : return_inst = opStoreDecode(inst);
+      op_csr    : return_inst = opCsrDecode(inst);
+      default   : return_inst.trap = tagged Valid TrapCause {isInterrupt: False, code: 2};
     endcase
 
     return_inst.pc = pc;
