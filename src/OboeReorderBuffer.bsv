@@ -10,7 +10,7 @@ import OboeTypeDef::*;
 import OboeConfig::*;
 import OboeFreeList::*;
 
-// Typdef: RobEntry
+// Typedef: RobEntry
 //   Reorder buffer entry.
 typedef struct {
   Word      pc;
