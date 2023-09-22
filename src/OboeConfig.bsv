@@ -8,4 +8,12 @@ typedef 64 NumPhysicalRegs;
 //   Integer value of <NumPhysicalRegs>.
 Integer kNumPhysicalRegs = valueOf(NumPhysicalRegs);
 
+// Typedef: NumWbPorts
+//   Number of write back ports
+typedef 2 NumWbPorts;
+
+// Constant: kNumWritebackPorts
+//   Integer value of <NumWritebackPorts>
+Integer kNumWbPorts = valueOf(NumWbPorts);
+
 endpackage
