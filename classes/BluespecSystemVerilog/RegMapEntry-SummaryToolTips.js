@@ -1,1 +1,1 @@
-﻿NDSummary.OnToolTipsLoaded("BluespecSystemVerilogClass:RegMapEntry",{19:"<div class=\"NDToolTip TStruct LBluespecSystemVerilog\"><div class=\"TTSummary\">Entry for future register map.</div></div>"});
+﻿NDSummary.OnToolTipsLoaded("BluespecSystemVerilogClass:RegMapEntry",{1:"<div class=\"NDToolTip TStruct LBluespecSystemVerilog\"><div class=\"TTSummary\">Entry for future register map.</div></div>"});

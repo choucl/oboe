@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("opa",["Function"],[["opAuipcDecode",,[["mkOboeDecoder",,,,0,"File:OboeDecoder.bsv:mkOboeDecoder.opAuipcDecode","BluespecSystemVerilogModule:mkOboeDecoder:opAuipcDecode"]]]]);

@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("opc",["Type","Function"],[["OpCodeWidth",,[[,,,,0,"File:OboeDecoder.bsv:OpCodeWidth"]]],["opCsrDecode",,[["mkOboeDecoder",,,,1,"File:OboeDecoder.bsv:mkOboeDecoder.opCsrDecode","BluespecSystemVerilogModule:mkOboeDecoder:opCsrDecode"]]]]);

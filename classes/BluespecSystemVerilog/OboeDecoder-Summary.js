@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("BluespecSystemVerilogClass:OboeDecoder","OboeDecoder");NDSummary.OnSummaryLoaded("BluespecSystemVerilogClass:OboeDecoder",[["Bluespec SystemVerilog","BluespecSystemVerilog"]],[["Groups","Group"],["Interfaces","Interface"],["Method","Method"]],[[93,0,1,"OboeDecoder"],[94,0,0,"Method","Method"],[95,0,2,"decode","decode"]]);

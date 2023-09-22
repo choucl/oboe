@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("dec",["Section"],[["Decoder",,[[,"Decoder type definitions",,,0,"File:OboeTypeDef.bsv:Decoder_type_definitions"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("dec",["Method","Section"],[["decode",,[["OboeDecoder",,,,0,"File:OboeDecoder.bsv:OboeDecoder.decode","BluespecSystemVerilogClass:OboeDecoder:decode"]]],["Decoder",,[[,"Decoder type definitions",,,1,"File:OboeTypeDef.bsv:Decoder_type_definitions"]]]]);
