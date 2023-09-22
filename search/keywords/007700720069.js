@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("wri",["Function"],[["writeEntry",,[["mkOboeReorderBuffer",,,,0,"File:OboeReorderBuffer.bsv:mkOboeReorderBuffer.writeEntry","BluespecSystemVerilogModule:mkOboeReorderBuffer:writeEntry"]]]]);

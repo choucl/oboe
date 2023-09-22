@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("knu",["Constant"],[["kNumArchRegs",,[[,,,,0,"File:OboeTypeDef.bsv:kNumArchRegs"]]],["kNumPhysicalRegs",,[[,,,,0,"File:OboeConfig.bsv:kNumPhysicalRegs"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("knu",["Constant"],[["kNumArchRegs",,[[,,,,0,"File:OboeTypeDef.bsv:kNumArchRegs"]]],["kNumPhysicalRegs",,[[,,,,0,"File:OboeConfig.bsv:kNumPhysicalRegs"]]],["kNumWritebackPorts",,[[,,,,0,"File:OboeConfig.bsv:kNumWritebackPorts"]]]]);

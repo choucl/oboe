@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("num",["Type"],[["NumArchRegs",,[[,,,,0,"File:OboeTypeDef.bsv:NumArchRegs"]]],["NumPhysicalRegs",,[[,,,,0,"File:OboeConfig.bsv:NumPhysicalRegs"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("num",["Type"],[["NumArchRegs",,[[,,,,0,"File:OboeTypeDef.bsv:NumArchRegs"]]],["NumPhysicalRegs",,[[,,,,0,"File:OboeConfig.bsv:NumPhysicalRegs"]]],["NumWbPorts",,[[,,,,0,"File:OboeConfig.bsv:NumWbPorts"]]]]);

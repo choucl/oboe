@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("wb_",["Variable"],[["wb_ready",,[["mkOboeReorderBuffer",,,,0,"File:OboeReorderBuffer.bsv:mkOboeReorderBuffer.wb_ready","BluespecSystemVerilogModule:mkOboeReorderBuffer:wb_ready"]]]]);
