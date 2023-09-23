@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("typ",["Section"],[["type",,[[,"Decoder type definitions",,,0,"File:OboeTypeDef.bsv:Decoder_type_definitions"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("typ",["Section"],[["type",,[[,"Microarchitecture type definitions",,,0,"File:OboeTypeDef.bsv:Microarchitecture_type_definitions"]]]]);

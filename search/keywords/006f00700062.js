@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("opb",["Function"],[["opBranchDecode",,[["mkOboeDecoder",,,,0,"File:OboeDecoder.bsv:mkOboeDecoder.opBranchDecode","BluespecSystemVerilogModule:mkOboeDecoder:opBranchDecode"]]]]);

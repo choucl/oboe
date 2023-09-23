@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("sty",["Type"],[["SType",,[[,,,,0,"File:OboeDecoder.bsv:SType"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("sty",["Type"],[["SType",,[[,,,,0,"File:OboeTypeDef.bsv:SType"]]]]);

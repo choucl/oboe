@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("opj",["Function"],[["opJalDecode",,[["mkOboeDecoder",,,,0,"File:OboeDecoder.bsv:mkOboeDecoder.opJalDecode","BluespecSystemVerilogModule:mkOboeDecoder:opJalDecode"]]],["opJalrDecode",,[["mkOboeDecoder",,,,0,"File:OboeDecoder.bsv:mkOboeDecoder.opJalrDecode","BluespecSystemVerilogModule:mkOboeDecoder:opJalrDecode"]]]]);
