@@ -266,7 +266,7 @@ module mkOboeDecoder(OboeDecoder);
   endfunction
 
   // Function: decodeSystem
-  //   Decode the instructions with opcode = CSR.
+  //   Decode the instructions with opcode = SYSTEM.
   function BackendInst decodeSystem(RawInst inst);
     IType decoded_inst = unpack(inst);
     CsruCtrl csru_ctrl = CsruCtrl {op: RW, src: Rs1};  // default value

@@ -132,7 +132,7 @@ typedef struct {
 } UType deriving(Eq, Bits);
 
 // Typedef: JType
-//   U-type instruction format.
+//   J-type instruction format.
 typedef struct {
   Bit#(1)   imm4;
   Bit#(10)  imm1;
