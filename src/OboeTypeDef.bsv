@@ -2,6 +2,10 @@ package OboeTypeDef;
 
 import OboeConfig::*;
 
+/////////////////////////////////////
+// Section: RISC-V ISA Definitions //
+/////////////////////////////////////
+
 // Typedef: XLEN
 //   RISC-V XLEN.
 typedef 32 XLEN;
@@ -18,6 +22,137 @@ Integer kNumArchRegs = valueOf(NumArchRegs);
 //   Architectural register ID/specifier type.
 typedef UInt#(TLog#(NumArchRegs)) ArchRegId;
 
+typedef Bit#(7) Opcode;
+
+Opcode opcode_op_imm = 'b0010011;
+Opcode opcode_op     = 'b0110011;
+Opcode opcode_lui    = 'b0110111;
+Opcode opcode_auipc  = 'b0010111;
+Opcode opcode_jal    = 'b1101111;
+Opcode opcode_jalr   = 'b1100111;
+Opcode opcode_branch = 'b1100011;
+Opcode opcode_load   = 'b0000011;
+Opcode opcode_store  = 'b0100011;
+Opcode opcode_system = 'b1110011;
+
+typedef Bit#(3) Funct3;
+
+Funct3 funct3_add  = 'b000;
+Funct3 funct3_sll  = 'b001;
+Funct3 funct3_slt  = 'b010;
+Funct3 funct3_sltu = 'b011;
+Funct3 funct3_xor  = 'b100;
+Funct3 funct3_srl  = 'b101;
+Funct3 funct3_or   = 'b110;
+Funct3 funct3_and  = 'b111;
+
+Funct3 funct3_lb   = 'b000;
+Funct3 funct3_lh   = 'b001;
+Funct3 funct3_lw   = 'b010;
+Funct3 funct3_lbu  = 'b100;
+Funct3 funct3_lhu  = 'b101;
+
+Funct3 funct3_sb   = 'b000;
+Funct3 funct3_sh   = 'b001;
+Funct3 funct3_sw   = 'b010;
+
+Funct3 funct3_beq  = 'b000;
+Funct3 funct3_bne  = 'b001;
+Funct3 funct3_blt  = 'b100;
+Funct3 funct3_bge  = 'b101;
+Funct3 funct3_bltu = 'b110;
+Funct3 funct3_bgeu = 'b111;
+
+Funct3 funct3_csrrw  = 'b001;
+Funct3 funct3_csrrs  = 'b010;
+Funct3 funct3_csrrc  = 'b011;
+Funct3 funct3_csrrwi = 'b101;
+Funct3 funct3_csrrsi = 'b110;
+Funct3 funct3_csrrci = 'b111;
+Funct3 funct3_priv   = 'b000;
+
+typedef Bit#(7) Funct7;
+
+typedef Bit#(12) Funct12;
+
+Funct12 funct12_mret = 'b0011_0000_0010;  // trap return
+Funct12 funct12_wfi  = 'b0001_0000_0101;  // interrupt management
+
+// Typedef: RType
+//   R-type instruction format.
+typedef struct {
+  Funct7    funct7;
+  ArchRegId rs2;
+  ArchRegId rs1;
+  Funct3    funct3;
+  ArchRegId rd;
+  Opcode    opcode;
+} RType deriving(Eq, Bits);
+
+// Typedef: IType
+//   I-type instruction format.
+typedef struct {
+  Bit#(12)  imm;
+  ArchRegId rs1;
+  Funct3    funct3;
+  ArchRegId rd;
+  Opcode    opcode;
+} IType deriving(Eq, Bits);
+
+// Typedef: SType
+//   S-type instruction format.
+typedef struct {
+  Bit#(7)   imm2;
+  ArchRegId rs2;
+  ArchRegId rs1;
+  Funct3    funct3;
+  Bit#(5)   imm1;
+  Opcode    opcode;
+} SType deriving(Eq, Bits);
+
+// Typedef: BType
+//   B-type instruction format.
+typedef struct {
+  Bit#(1)   imm4;
+  Bit#(6)   imm2;
+  ArchRegId rs2;
+  ArchRegId rs1;
+  Funct3    funct3;
+  Bit#(4)   imm1;
+  Bit#(1)   imm3;
+  Opcode    opcode;
+} BType deriving(Eq, Bits);
+
+// Typedef: UType
+//   U-type instruction format.
+typedef struct {
+  Bit#(20)  imm;
+  ArchRegId rd;
+  Opcode    opcode;
+} UType deriving(Eq, Bits);
+
+// Typedef: JType
+//   U-type instruction format.
+typedef struct {
+  Bit#(1)   imm4;
+  Bit#(10)  imm1;
+  Bit#(1)   imm2;
+  Bit#(8)   imm3;
+  ArchRegId rd;
+  Opcode    opcode;
+} JType deriving(Eq, Bits);
+
+// Typedef: TrapCause
+//   Define the trap type and cause
+typedef struct {
+  Bool     isInterrupt;
+  Bit#(31) code;
+} TrapCause deriving(Bits, FShow);
+
+/////////////////////////////////////////////////
+// Section: Microarchitecture type definitions //
+/////////////////////////////////////////////////
+
 // Typedef: TagWidth
 //   Bit width of <Tag>.
 typedef TLog#(NumPhysicalRegs) TagWidth;
@@ -33,9 +168,6 @@ typedef Bit#(XLEN) Word;
 // Typdef: CsrId
 //   Identifier of CSR
 typedef UInt#(12) CsrId;
-
-
-// Section: Decoder type definitions
 
 // Typedef: RawInst
 //   XLEN-width raw RISC-V instruction.
@@ -155,13 +287,6 @@ typedef union tagged {
   LsuCtrl  LSU;
 } FunctionUnit deriving(Bits, Eq, FShow);
 
-// Typedef: TrapCause
-//   Define the trap type and cause
-typedef struct {
-  Bool isInterrupt;
-  Bit#(31) code;
-} TrapCause deriving(Bits, FShow);
-
 // Typedef: BackendInst
 //   Structure for decoded instruction.
 typedef struct {
@@ -171,9 +296,7 @@ typedef struct {
   ArchRegId         rd;
   Word              imm;
   FunctionUnit      fu;
-  CsrId             csr;
   Maybe#(TrapCause) trap;
 } BackendInst deriving(Bits, FShow);
-
 
 endpackage
