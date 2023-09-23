@@ -149,6 +149,9 @@ typedef struct {
   Bit#(31) code;
 } TrapCause deriving(Bits, FShow);
 
+// TODO: add more trap causes here
+TrapCause illegal_instruction = TrapCause {isInterrupt: False, code: 2};
+
 /////////////////////////////////////////////////
 // Section: Microarchitecture type definitions //
 /////////////////////////////////////////////////

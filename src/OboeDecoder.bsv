@@ -22,8 +22,6 @@ function Word immJType(JType inst) = signExtend({inst.imm4, inst.imm3, inst.imm2
 //   Generate B-type immediate value
 function Word immBType(BType inst) = signExtend({inst.imm4, inst.imm3, inst.imm2, inst.imm1, 1'b0}); 
 
-TrapCause illegal_instruction = TrapCause {isInterrupt: False, code: 2};
-
 // Interface: OboeDecoder
 interface OboeDecoder;
   // Method: decode
