@@ -47,7 +47,7 @@ module mkOboeDecoder(OboeDecoder);
   function BackendInst decodeOpImm(RawInst inst);
     IType decoded_inst = unpack(inst);
     AluCtrl alu_ctrl = AluCtrl {op: ADD, src: Rs1Imm};  // default value
-    Bool isInvalid = False;  // to check the decoding procedure is valid or not
+    Bool isIllegal = False;
 
     case (decoded_inst.funct3)
       funct3_add:  alu_ctrl = AluCtrl {op: ADD, src: Rs1Imm};
@@ -60,7 +60,7 @@ module mkOboeDecoder(OboeDecoder);
         if (decoded_inst.imm[11:5] == 0)
           alu_ctrl = AluCtrl {op: SLL, src: Rs1Imm};
         else
-          isInvalid = True;
+          isIllegal = True;
       end
       funct3_srl: begin 
         if (decoded_inst.imm[11:5] == 0)
@@ -68,10 +68,10 @@ module mkOboeDecoder(OboeDecoder);
         else if (inst[31:25] == 'b0100000)
           alu_ctrl = AluCtrl {op: SRA, src: Rs1Imm};
         else
-          isInvalid = True;
+          isIllegal = True;
       end
       default:
-        isInvalid = True;
+        isIllegal = True;
     endcase
 
     return BackendInst {
@@ -81,7 +81,7 @@ module mkOboeDecoder(OboeDecoder);
       rd:   decoded_inst.rd,
       imm:  immIType(decoded_inst),
       fu:   tagged ALU alu_ctrl,
-      trap: (isInvalid)? tagged Valid illegal_instruction : tagged Invalid
+      trap: (isIllegal)? tagged Valid illegal_instruction : tagged Invalid
     };
   endfunction
 
@@ -124,7 +124,7 @@ module mkOboeDecoder(OboeDecoder);
   function BackendInst decodeOp(RawInst inst);
     RType decoded_inst = unpack(inst);
     AluCtrl alu_ctrl = AluCtrl {op: ADD, src: Rs1Rs2};  // default value
-    Bool isInvalid = False;
+    Bool isIllegal = False;
 
     case ({decoded_inst.funct7, decoded_inst.funct3})
       {'b0000000, funct3_add}:  alu_ctrl = AluCtrl {op: ADD, src: Rs1Rs2}; 
@@ -137,7 +137,7 @@ module mkOboeDecoder(OboeDecoder);
       {'b0000000, funct3_sll}:  alu_ctrl = AluCtrl {op: SLL, src: Rs1Rs2};
       {'b0000000, funct3_srl}:  alu_ctrl = AluCtrl {op: SRL, src: Rs1Rs2}; 
       {'b0100000, funct3_srl}:  alu_ctrl = AluCtrl {op: SRA, src: Rs1Rs2};
-      default: isInvalid = True;
+      default: isIllegal = True;
     endcase
 
     return BackendInst {
@@ -147,7 +147,7 @@ module mkOboeDecoder(OboeDecoder);
       rd:   decoded_inst.rd,
       imm:  0,
       fu:   tagged ALU alu_ctrl,
-      trap: (isInvalid)? tagged Valid illegal_instruction : tagged Invalid
+      trap: (isIllegal)? tagged Valid illegal_instruction : tagged Invalid
     };
   endfunction
   
@@ -190,7 +190,7 @@ module mkOboeDecoder(OboeDecoder);
   function BackendInst decodeBranch(RawInst inst);
     BType decoded_inst = unpack(inst);
     BruCtrl bru_ctrl = BruCtrl {op: EQ, src: PcImm};  // default value
-    Bool isInvalid = False;
+    Bool isIllegal = False;
 
     case (decoded_inst.funct3)
       funct3_beq:  bru_ctrl = BruCtrl {op: EQ,  src: PcImm};
@@ -199,7 +199,7 @@ module mkOboeDecoder(OboeDecoder);
       funct3_bge:  bru_ctrl = BruCtrl {op: GE,  src: PcImm};
       funct3_bltu: bru_ctrl = BruCtrl {op: LTU, src: PcImm};
       funct3_bgeu: bru_ctrl = BruCtrl {op: GEU, src: PcImm};
-      default: isInvalid = True;
+      default: isIllegal = True;
     endcase
 
     return BackendInst {
@@ -209,7 +209,7 @@ module mkOboeDecoder(OboeDecoder);
       rd:   0,
       imm:  immBType(decoded_inst),
       fu:   tagged BRU bru_ctrl,
-      trap: (isInvalid)? tagged Valid illegal_instruction : tagged Invalid
+      trap: (isIllegal)? tagged Valid illegal_instruction : tagged Invalid
     };
   endfunction
 
@@ -218,7 +218,7 @@ module mkOboeDecoder(OboeDecoder);
   function BackendInst decodeLoad(RawInst inst);
     IType decoded_inst = unpack(inst);
     LsuCtrl lsu_ctrl = LsuCtrl {op: LW, src: Rs1Imm};  // default value
-    Bool isInvalid = False;
+    Bool isIllegal = False;
 
     case (decoded_inst.funct3)
       funct3_lb:  lsu_ctrl = LsuCtrl {op: LB, src: Rs1Imm};
@@ -226,7 +226,7 @@ module mkOboeDecoder(OboeDecoder);
       funct3_lw:  lsu_ctrl = LsuCtrl {op: LW, src: Rs1Imm};
       funct3_lbu: lsu_ctrl = LsuCtrl {op: LBU, src: Rs1Imm};
       funct3_lhu: lsu_ctrl = LsuCtrl {op: LHU, src: Rs1Imm};
-      default: isInvalid = True;
+      default: isIllegal = True;
     endcase
 
     return BackendInst {
@@ -236,7 +236,7 @@ module mkOboeDecoder(OboeDecoder);
       rd:   decoded_inst.rd,
       imm:  immIType(decoded_inst),
       fu:   tagged LSU lsu_ctrl,
-      trap: (isInvalid)? tagged Valid illegal_instruction : tagged Invalid
+      trap: (isIllegal)? tagged Valid illegal_instruction : tagged Invalid
     };
   endfunction
 
@@ -245,13 +245,13 @@ module mkOboeDecoder(OboeDecoder);
   function BackendInst decodeStore(RawInst inst);
     SType decoded_inst = unpack(inst);
     LsuCtrl lsu_ctrl = LsuCtrl {op: SW, src: Rs1Rs2Imm};  // default value
-    Bool isInvalid = False;
+    Bool isIllegal = False;
 
     case (decoded_inst.funct3)
       funct3_sb: lsu_ctrl = LsuCtrl {op: SB, src: Rs1Rs2Imm};
       funct3_sh: lsu_ctrl = LsuCtrl {op: SH, src: Rs1Rs2Imm};
       funct3_sw: lsu_ctrl = LsuCtrl {op: SW, src: Rs1Rs2Imm};
-      default: isInvalid = True;
+      default: isIllegal = True;
     endcase
 
     return BackendInst {
@@ -261,7 +261,7 @@ module mkOboeDecoder(OboeDecoder);
       rd:   0,
       imm:  immSType(decoded_inst),
       fu:   tagged LSU lsu_ctrl,
-      trap: (isInvalid)? tagged Valid illegal_instruction : tagged Invalid
+      trap: (isIllegal)? tagged Valid illegal_instruction : tagged Invalid
     };
   endfunction
 
@@ -270,7 +270,7 @@ module mkOboeDecoder(OboeDecoder);
   function BackendInst decodeSystem(RawInst inst);
     IType decoded_inst = unpack(inst);
     CsruCtrl csru_ctrl = CsruCtrl {op: RW, src: Rs1};  // default value
-    Bool isInvalid = False;
+    Bool isIllegal = False;
 
     case (decoded_inst.funct3)
       funct3_csrrw:  csru_ctrl = CsruCtrl {op: RW, src: Rs1};
@@ -281,9 +281,9 @@ module mkOboeDecoder(OboeDecoder);
       funct3_csrrci: csru_ctrl = CsruCtrl {op: RC, src: Uimm};
       funct3_priv: begin
         // TODO: decode privileged instructions
-        isInvalid = True;
+        isIllegal = True;
       end
-      default: isInvalid = True;
+      default: isIllegal = True;
     endcase
 
     return BackendInst {
@@ -293,7 +293,7 @@ module mkOboeDecoder(OboeDecoder);
       rd:   decoded_inst.rd,
       imm:  zeroExtend(decoded_inst.imm),
       fu:   tagged CSRU csru_ctrl,
-      trap: (isInvalid)? tagged Valid illegal_instruction : tagged Invalid
+      trap: (isIllegal)? tagged Valid illegal_instruction : tagged Invalid
     };
   endfunction
 
