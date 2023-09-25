@@ -8,6 +8,7 @@ import OboeTypeDef::*;
 interface OboeArchitectureRegMap;
   // Method: commit
   //   Update the tag in architectural register map and return the old tag.
+  //    When rd = 0, return the commit_ptr directly.
   //
   // Parameter:
   //   rd         - Destination register to be committed.
@@ -38,7 +39,7 @@ module mkOboeArchitectureRegMap(OboeArchitectureRegMap);
 
   method ActionValue#(Tag) commit(ArchRegId rd, Tag commit_ptr);
     if (rd == 0) begin
-      return 0;
+      return commit_ptr;
     end else begin
       Tag tmp_tag = tag_vector[rd];
       tag_vector[rd] <= commit_ptr;
