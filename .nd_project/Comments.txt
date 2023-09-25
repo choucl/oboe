@@ -38,7 +38,7 @@ Comment Type: Method
    Keywords:
       method
 
-Alter Comment Type: Subinterface
+Comment Type: Subinterface
 
    Plural Display Name: Subinterface
 
@@ -46,7 +46,7 @@ Alter Comment Type: Subinterface
    Flags: Code
 
    Keywords:
-      interface
+      subinterface
 
 
 Alter Comment Type: Class
