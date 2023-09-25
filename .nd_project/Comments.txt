@@ -38,6 +38,16 @@ Comment Type: Method
    Keywords:
       method
 
+Comment Type: Subinterface
+
+   Plural Display Name: Subinterface
+
+   Scope: Normal
+   Flags: Code
+
+   Keywords:
+      interface
+
 
 Alter Comment Type: Class
 
