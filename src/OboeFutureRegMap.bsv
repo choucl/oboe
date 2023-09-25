@@ -6,17 +6,6 @@ import GetPut::*;
 import OboeTypeDef::*;
 import OboeConfig::*;
 
-// Struct: RegMapEntry
-//   Entry for future register map.
-//
-// Variable:
-//   isOutdated - Indicates the register has been renamed 
-//   tag        - The pointer for physical register file
-typedef struct {
-  Bool isOutdated;
-  Tag tag;
-} RegMapEntry;
-
 // Interface: OboeFutureRegMap
 interface OboeFutureRegMap;
   // Method: lookup
@@ -26,8 +15,8 @@ interface OboeFutureRegMap;
   //   index - Architectural register index to look up in future register map.
   //
   // Returns:
-  //   <RegMapEntry> for the corresponding index.
-  method RegMapEntry lookup(ArchRegId index);
+  //   Tuple2 for Bool and <Tag>. The Bool value indicates the outdated status of the entry.
+  method Tuple2#(Bool, Tag) lookup(ArchRegId index);
   // Method: rename
   //   Rename the future register map entry with the given tag.
   //
@@ -79,11 +68,11 @@ module mkOboeFutureRegMap(OboeFutureRegMap);
 
   interface Vector wbPorts = map(genWbPort, genVector);
 
-  method RegMapEntry lookup(ArchRegId index);
+  method Tuple2#(Bool, Tag) lookup(ArchRegId index);
     if (index == 0) begin
-      return RegMapEntry {isOutdated: False, tag: 0};
+      return tuple2(False, 0);  // is_outdated = False, tag = 0
     end else begin
-      return RegMapEntry {isOutdated: outdated_vector[index][kNumWbPorts], tag: tag_vector[index]};
+      return tuple2(outdated_vector[index][kNumWbPorts], tag_vector[index]);
     end
   endmethod
 

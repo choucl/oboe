@@ -12,7 +12,7 @@ import OboeConfig::*;
 interface OboeRegAliasTable;
   // Method: lookup
   //   See <OboeFutureRegMap.lookup>.
-  method RegMapEntry lookup(ArchRegId index);
+  method Tuple2#(Bool, Tag) lookup(ArchRegId index);
   // Method: rename
   //   See <OboeFutureRegMap.rename>.
   method Action rename(ArchRegId index, Tag value);
