@@ -1,1 +1,0 @@
-﻿NDFramePage.OnPageTitleLoaded("BluespecSystemVerilogClass:RegMapEntry","RegMapEntry");NDSummary.OnSummaryLoaded("BluespecSystemVerilogClass:RegMapEntry",[["Bluespec SystemVerilog","BluespecSystemVerilog"]],[["Structs","Struct"]],[[1,0,0,"RegMapEntry"]]);
