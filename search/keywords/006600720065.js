@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("fre",["Variable"],[["free_ptr",,[["mkOboeFreeList",,,,0,"File:OboeFreeList.bsv:mkOboeFreeList.free_ptr","BluespecSystemVerilogModule:mkOboeFreeList:free_ptr"]]],["freelist",,[["mkOboeReorderBuffer",,,,0,"File:OboeReorderBuffer.bsv:mkOboeReorderBuffer.freelist","BluespecSystemVerilogModule:mkOboeReorderBuffer:freelist"]]]]);

@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("nul",["Variable"],[["null_ptr",,[["mkOboeFreeList",,,,0,"File:OboeFreeList.bsv:mkOboeFreeList.null_ptr","BluespecSystemVerilogModule:mkOboeFreeList:null_ptr"]]]]);

@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("csr",["Type","Enumeration"],[["CsruCtrl",,[[,,,,0,"File:OboeTypeDef.bsv:CsruCtrl"]]],["CsruOp",,[[,,,,1,"File:OboeTypeDef.bsv:CsruOp"]]],["CsruSrc",,[[,,,,1,"File:OboeTypeDef.bsv:CsruSrc"]]]]);

@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("BluespecSystemVerilogModule:mkOboeRegAliasTable","mkOboeRegAliasTable");NDSummary.OnSummaryLoaded("BluespecSystemVerilogModule:mkOboeRegAliasTable",[["Bluespec SystemVerilog","BluespecSystemVerilog"]],[["Module","Class"]],[[55,0,0,"mkOboeRegAliasTable"]]);

@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ins",["Method"],[["insert",,[["OboeReorderBuffer",,,,0,"File:OboeReorderBuffer.bsv:OboeReorderBuffer.insert","BluespecSystemVerilogClass:OboeReorderBuffer:insert"]]]]);
