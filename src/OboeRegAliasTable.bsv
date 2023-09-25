@@ -1,10 +1,12 @@
 package OboeRegAliasTable;
 
 import Vector::*;
+import GetPut::*;
 
 import OboeTypeDef::*;
 import OboeFutureRegMap::*;
 import OboeArchitectureRegMap::*;
+import OboeConfig::*;
 
 // Interface: OboeRegAliasTable
 interface OboeRegAliasTable;
@@ -14,6 +16,9 @@ interface OboeRegAliasTable;
   // Method: rename
   //   See <OboeFutureRegMap.rename>.
   method Action rename(ArchRegId index, Tag value);
+  // Subinterface: wbPorts
+  //   See <OboeFutureRegMap.wbPorts>.
+  interface Vector#(NumWbPorts, Put#(ArchRegId)) wbPorts;
   // Method: commit
   //   See <OboeArchitectureRegMap.commit>.
   method ActionValue#(Tag) commit(ArchRegId index, Tag commit_ptr);
@@ -30,6 +35,8 @@ endinterface
 module mkOboeRegAliasTable(OboeRegAliasTable);
   OboeFutureRegMap frm <- mkOboeFutureRegMap();
   OboeArchitectureRegMap arm <- mkOboeArchitectureRegMap();
+
+  interface wbPorts = frm.wbPorts;
 
   method lookup = frm.lookup;
   method rename = frm.rename;
