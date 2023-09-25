@@ -38,7 +38,7 @@ Comment Type: Method
    Keywords:
       method
 
-Comment Type: Subinterface
+Alter Comment Type: Subinterface
 
    Plural Display Name: Subinterface
 
