@@ -10,96 +10,99 @@
 
 <script type="text/javascript">var q = window.location.search;if (q.startsWith("?Theme=")){var t = q.slice(7);var e = t.indexOf(";");if (e != -1){  t = t.slice(0, e);  }document.documentElement.classList.add(t + "Theme")}</script>
 
-<a name="OboeFreeList"></a><a name="Topic116"></a><div class="CTopic TInterface LBluespecSystemVerilog first">
+<a name="Subinterface"></a><a name="Topic121"></a><div class="CTopic TGroup LBluespecSystemVerilog first">
+ <div class="CTitle">Subinterface</div>
+</div>
+
+<a name="OboeFreeList"></a><a name="Topic122"></a><div class="CTopic TSubinterface LBluespecSystemVerilog">
  <div class="CTitle">OboeFreeList</div>
- <div class="NDClassPrototype" id="NDClassPrototype116"><div class="CPEntry TInterface Current"><div class="CPModifiers"><span class="SHKeyword">interface</span></div><div class="CPName">OboeFreeList</div></div></div>
  <div class="CBody"><p>Scheduler uses the interface to allocate an entry for register renaming or commit and free and entry when instruction retired.</p></div>
 </div>
 
-<a name="OboeFreeList.Method"></a><a name="Topic117"></a><div class="CTopic TGroup LBluespecSystemVerilog">
+<a name="Method"></a><a name="Topic123"></a><div class="CTopic TGroup LBluespecSystemVerilog">
  <div class="CTitle">Method</div>
 </div>
 
-<a name="OboeFreeList.allocate"></a><a name="Topic118"></a><div class="CTopic TMethod LBluespecSystemVerilog">
+<a name="allocate"></a><a name="Topic124"></a><div class="CTopic TMethod LBluespecSystemVerilog">
  <div class="CTitle">allocate</div>
- <div id="NDPrototype118" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="3" data-NarrowColumnCount="2"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/3" style="grid-area:1/1/2/2">method ActionValue#(</div><div class="PName InFirstParameterColumn InLastParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">Tag</div><div class="PAfterParameters" data-WideGridArea="1/3/2/4" data-NarrowGridArea="3/1/4/3" style="grid-area:1/3/2/4">) allocate()</div></div></div></div>
+ <div id="NDPrototype124" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="3" data-NarrowColumnCount="2"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/3" style="grid-area:1/1/2/2">method ActionValue#(</div><div class="PName InFirstParameterColumn InLastParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">Tag</div><div class="PAfterParameters" data-WideGridArea="1/3/2/4" data-NarrowGridArea="3/1/4/3" style="grid-area:1/3/2/4">) allocate()</div></div></div></div>
  <div class="CBody"><p>Allocate an entry from the ROB or physical register file.</p><div class="CHeading">Return</div><p>Tag to the allocated entry.</p></div>
 </div>
 
-<a name="OboeFreeList.commitAndFree"></a><a name="Topic119"></a><div class="CTopic TMethod LBluespecSystemVerilog">
+<a name="commitAndFree"></a><a name="Topic125"></a><div class="CTopic TMethod LBluespecSystemVerilog">
  <div class="CTitle">commitAndFree</div>
- <div id="NDPrototype119" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="3" data-NarrowColumnCount="2"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/3" style="grid-area:1/1/2/2">method ActionValue#(</div><div class="PName InFirstParameterColumn InLastParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">Tag</div><div class="PAfterParameters" data-WideGridArea="1/3/2/4" data-NarrowGridArea="3/1/4/3" style="grid-area:1/3/2/4">) commitAndFree(Tag commit_ptr, Tag to_free)</div></div></div></div>
+ <div id="NDPrototype125" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="3" data-NarrowColumnCount="2"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/3" style="grid-area:1/1/2/2">method ActionValue#(</div><div class="PName InFirstParameterColumn InLastParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">Tag</div><div class="PAfterParameters" data-WideGridArea="1/3/2/4" data-NarrowGridArea="3/1/4/3" style="grid-area:1/3/2/4">) commitAndFree(Tag commit_ptr, Tag to_free)</div></div></div></div>
  <div class="CBody"><p>Commit an entry and free an entry simultaneously.</p><div class="CHeading">Parameter</div><table class="CDefinitionList"><tr><td class="CDLEntry">commit_ptr</td><td class="CDLDefinition"><p>Tag to the entry to commit.</p></td></tr><tr><td class="CDLEntry">to_free</td><td class="CDLDefinition"><p>Tag to the entry to be freed.</p></td></tr></table><div class="CHeading">Return</div><p>Tag of the entry to commit next.</p></div>
 </div>
 
-<a name="mkOboeFreeList"></a><a name="Topic120"></a><div class="CTopic TClass LBluespecSystemVerilog">
+<a name="mkOboeFreeList"></a><a name="Topic126"></a><div class="CTopic TClass LBluespecSystemVerilog">
  <div class="CTitle">mkOboeFreeList</div>
- <div id="NDPrototype120" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="3" data-NarrowColumnCount="2"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/3" style="grid-area:1/1/2/2">module mkOboeFreeList (</div><div class="PName InFirstParameterColumn InLastParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">OboeFreeList</div><div class="PAfterParameters" data-WideGridArea="1/3/2/4" data-NarrowGridArea="3/1/4/3" style="grid-area:1/3/2/4">)</div></div></div></div>
+ <div id="NDPrototype126" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="3" data-NarrowColumnCount="2"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/3" style="grid-area:1/1/2/2">module mkOboeFreeList (</div><div class="PName InFirstParameterColumn InLastParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">OboeFreeList</div><div class="PAfterParameters" data-WideGridArea="1/3/2/4" data-NarrowGridArea="3/1/4/3" style="grid-area:1/3/2/4">)</div></div></div></div>
  <div class="CBody"><p>Free list implementation to maintain a list of free ROB/physical register file entries.</p></div>
 </div>
 
-<a name="mkOboeFreeList.Functions"></a><a name="Topic121"></a><div class="CTopic TGroup LBluespecSystemVerilog">
+<a name="mkOboeFreeList.Functions"></a><a name="Topic127"></a><div class="CTopic TGroup LBluespecSystemVerilog">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="mkOboeFreeList.genInitialValue"></a><a name="Topic122"></a><div class="CTopic TFunction LBluespecSystemVerilog">
+<a name="mkOboeFreeList.genInitialValue"></a><a name="Topic128"></a><div class="CTopic TFunction LBluespecSystemVerilog">
  <div class="CTitle">genInitialValue</div>
- <div id="NDPrototype122" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="4" data-NarrowColumnCount="3"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/4" style="grid-area:1/1/2/2"><span class="SHKeyword">function</span> <a href="../index.html#File:OboeTypeDef.bsv:Tag" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,65);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >Tag</a> genInitialValue(</div><div class="PType InFirstParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">Integer&nbsp;</div><div class="PName InLastParameterColumn" data-WideGridArea="1/3/2/4" data-NarrowGridArea="2/2/3/3" style="grid-area:1/3/2/4">i</div><div class="PAfterParameters" data-WideGridArea="1/4/2/5" data-NarrowGridArea="3/1/4/4" style="grid-area:1/4/2/5">)</div></div></div></div>
+ <div id="NDPrototype128" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="4" data-NarrowColumnCount="3"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/4" style="grid-area:1/1/2/2"><span class="SHKeyword">function</span> <a href="../index.html#File:OboeTypeDef.bsv:Tag" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,69);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >Tag</a> genInitialValue(</div><div class="PType InFirstParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">Integer&nbsp;</div><div class="PName InLastParameterColumn" data-WideGridArea="1/3/2/4" data-NarrowGridArea="2/2/3/3" style="grid-area:1/3/2/4">i</div><div class="PAfterParameters" data-WideGridArea="1/4/2/5" data-NarrowGridArea="3/1/4/4" style="grid-area:1/4/2/5">)</div></div></div></div>
  <div class="CBody"><p>First kNumArchRegs entries are allocated to the architectural registers when reset. The remaining entries has initial value that points to the next entry. The tag of in-use entries is assigned to its tag id.</p></div>
 </div>
 
-<a name="mkOboeFreeList.Variables"></a><a name="Topic123"></a><div class="CTopic TGroup LBluespecSystemVerilog">
+<a name="mkOboeFreeList.Variables"></a><a name="Topic129"></a><div class="CTopic TGroup LBluespecSystemVerilog">
  <div class="CTitle">Variables</div>
 </div>
 
-<a name="mkOboeFreeList.next"></a><a name="Topic124"></a><div class="CTopic TVariable LBluespecSystemVerilog">
+<a name="mkOboeFreeList.next"></a><a name="Topic130"></a><div class="CTopic TVariable LBluespecSystemVerilog">
  <div class="CTitle">next</div>
- <div id="NDPrototype124" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="5" data-NarrowColumnCount="4"><div class="PBeforeParameters" data-WideGridArea="1/1/3/2" data-NarrowGridArea="1/1/2/5" style="grid-area:1/1/3/2">Vector#(</div><div class="PName InLastParameterColumn" data-WideGridArea="1/4/2/5" data-NarrowGridArea="2/3/3/4" style="grid-area:1/4/2/5">NumPhysicalRegs,</div><div class="PType InFirstParameterColumn" data-WideGridArea="2/2/3/3" data-NarrowGridArea="3/1/4/2" style="grid-area:2/2/3/3">Reg</div><div class="PSymbols" data-WideGridArea="2/3/3/4" data-NarrowGridArea="3/2/4/3" style="grid-area:2/3/3/4">#(</div><div class="PName InLastParameterColumn" data-WideGridArea="2/4/3/5" data-NarrowGridArea="3/3/4/4" style="grid-area:2/4/3/5">Tag)</div><div class="PAfterParameters NegativeLeftSpaceOnWide" data-WideGridArea="2/5/3/6" data-NarrowGridArea="4/1/5/5" style="grid-area:2/5/3/6">) <span class="SHKeyword">next</span> &lt;- mapM(mkReg, map(genInitialValue, genVector))</div></div></div></div>
+ <div id="NDPrototype130" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="5" data-NarrowColumnCount="4"><div class="PBeforeParameters" data-WideGridArea="1/1/3/2" data-NarrowGridArea="1/1/2/5" style="grid-area:1/1/3/2">Vector#(</div><div class="PName InLastParameterColumn" data-WideGridArea="1/4/2/5" data-NarrowGridArea="2/3/3/4" style="grid-area:1/4/2/5">NumPhysicalRegs,</div><div class="PType InFirstParameterColumn" data-WideGridArea="2/2/3/3" data-NarrowGridArea="3/1/4/2" style="grid-area:2/2/3/3">Reg</div><div class="PSymbols" data-WideGridArea="2/3/3/4" data-NarrowGridArea="3/2/4/3" style="grid-area:2/3/3/4">#(</div><div class="PName InLastParameterColumn" data-WideGridArea="2/4/3/5" data-NarrowGridArea="3/3/4/4" style="grid-area:2/4/3/5">Tag)</div><div class="PAfterParameters NegativeLeftSpaceOnWide" data-WideGridArea="2/5/3/6" data-NarrowGridArea="4/1/5/5" style="grid-area:2/5/3/6">) <span class="SHKeyword">next</span> &lt;- mapM(mkReg, map(genInitialValue, genVector))</div></div></div></div>
  <div class="CBody"><p>Vector of registers to store the next free entry.</p></div>
 </div>
 
-<a name="mkOboeFreeList.Functions(2)"></a><a name="Topic125"></a><div class="CTopic TGroup LBluespecSystemVerilog">
+<a name="mkOboeFreeList.Functions(2)"></a><a name="Topic131"></a><div class="CTopic TGroup LBluespecSystemVerilog">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="mkOboeFreeList.isInUse"></a><a name="Topic126"></a><div class="CTopic TFunction LBluespecSystemVerilog">
+<a name="mkOboeFreeList.isInUse"></a><a name="Topic132"></a><div class="CTopic TFunction LBluespecSystemVerilog">
  <div class="CTitle">isInUse</div>
- <div id="NDPrototype126" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="4" data-NarrowColumnCount="3"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/4" style="grid-area:1/1/2/2"><span class="SHKeyword">function</span> Bool isInUse(</div><div class="PType InFirstParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3"><a href="../index.html#File:OboeTypeDef.bsv:Tag" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,65);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >Tag</a>&nbsp;</div><div class="PName InLastParameterColumn" data-WideGridArea="1/3/2/4" data-NarrowGridArea="2/2/3/3" style="grid-area:1/3/2/4">tag</div><div class="PAfterParameters" data-WideGridArea="1/4/2/5" data-NarrowGridArea="3/1/4/4" style="grid-area:1/4/2/5">)</div></div></div></div>
+ <div id="NDPrototype132" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="4" data-NarrowColumnCount="3"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/4" style="grid-area:1/1/2/2"><span class="SHKeyword">function</span> Bool isInUse(</div><div class="PType InFirstParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3"><a href="../index.html#File:OboeTypeDef.bsv:Tag" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,69);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >Tag</a>&nbsp;</div><div class="PName InLastParameterColumn" data-WideGridArea="1/3/2/4" data-NarrowGridArea="2/2/3/3" style="grid-area:1/3/2/4">tag</div><div class="PAfterParameters" data-WideGridArea="1/4/2/5" data-NarrowGridArea="3/1/4/4" style="grid-area:1/4/2/5">)</div></div></div></div>
  <div class="CBody"><p>Indicate the entry pointed by the tag is in use or not.</p></div>
 </div>
 
-<a name="mkOboeFreeList.markInUse"></a><a name="Topic127"></a><div class="CTopic TFunction LBluespecSystemVerilog">
+<a name="mkOboeFreeList.markInUse"></a><a name="Topic133"></a><div class="CTopic TFunction LBluespecSystemVerilog">
  <div class="CTitle">markInUse</div>
- <div id="NDPrototype127" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="4" data-NarrowColumnCount="3"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/4" style="grid-area:1/1/2/2"><span class="SHKeyword">function</span> Action markInUse(</div><div class="PType InFirstParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3"><a href="../index.html#File:OboeTypeDef.bsv:Tag" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,65);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >Tag</a>&nbsp;</div><div class="PName InLastParameterColumn" data-WideGridArea="1/3/2/4" data-NarrowGridArea="2/2/3/3" style="grid-area:1/3/2/4">tag</div><div class="PAfterParameters" data-WideGridArea="1/4/2/5" data-NarrowGridArea="3/1/4/4" style="grid-area:1/4/2/5">)</div></div></div></div>
+ <div id="NDPrototype133" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="4" data-NarrowColumnCount="3"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/4" style="grid-area:1/1/2/2"><span class="SHKeyword">function</span> Action markInUse(</div><div class="PType InFirstParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3"><a href="../index.html#File:OboeTypeDef.bsv:Tag" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,69);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >Tag</a>&nbsp;</div><div class="PName InLastParameterColumn" data-WideGridArea="1/3/2/4" data-NarrowGridArea="2/2/3/3" style="grid-area:1/3/2/4">tag</div><div class="PAfterParameters" data-WideGridArea="1/4/2/5" data-NarrowGridArea="3/1/4/4" style="grid-area:1/4/2/5">)</div></div></div></div>
  <div class="CBody"><p>Action to mark the entry as in use.</p></div>
 </div>
 
-<a name="mkOboeFreeList.markFree"></a><a name="Topic128"></a><div class="CTopic TFunction LBluespecSystemVerilog">
+<a name="mkOboeFreeList.markFree"></a><a name="Topic134"></a><div class="CTopic TFunction LBluespecSystemVerilog">
  <div class="CTitle">markFree</div>
- <div id="NDPrototype128" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="4" data-NarrowColumnCount="3"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/4" style="grid-area:1/1/2/2"><span class="SHKeyword">function</span> Action markFree(</div><div class="PType InFirstParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3"><a href="../index.html#File:OboeTypeDef.bsv:Tag" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,65);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >Tag</a>&nbsp;</div><div class="PName InLastParameterColumn" data-WideGridArea="1/3/2/4" data-NarrowGridArea="2/2/3/3" style="grid-area:1/3/2/4">tag</div><div class="PAfterParameters" data-WideGridArea="1/4/2/5" data-NarrowGridArea="3/1/4/4" style="grid-area:1/4/2/5">)</div></div></div></div>
+ <div id="NDPrototype134" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="4" data-NarrowColumnCount="3"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/4" style="grid-area:1/1/2/2"><span class="SHKeyword">function</span> Action markFree(</div><div class="PType InFirstParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3"><a href="../index.html#File:OboeTypeDef.bsv:Tag" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,69);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >Tag</a>&nbsp;</div><div class="PName InLastParameterColumn" data-WideGridArea="1/3/2/4" data-NarrowGridArea="2/2/3/3" style="grid-area:1/3/2/4">tag</div><div class="PAfterParameters" data-WideGridArea="1/4/2/5" data-NarrowGridArea="3/1/4/4" style="grid-area:1/4/2/5">)</div></div></div></div>
  <div class="CBody"><p>Action to mark the entry as free (not in use).</p></div>
 </div>
 
-<a name="mkOboeFreeList.Variables(2)"></a><a name="Topic129"></a><div class="CTopic TGroup LBluespecSystemVerilog">
+<a name="mkOboeFreeList.Variables(2)"></a><a name="Topic135"></a><div class="CTopic TGroup LBluespecSystemVerilog">
  <div class="CTitle">Variables</div>
 </div>
 
-<a name="mkOboeFreeList.free_ptr"></a><a name="Topic130"></a><div class="CTopic TVariable LBluespecSystemVerilog">
+<a name="mkOboeFreeList.free_ptr"></a><a name="Topic136"></a><div class="CTopic TVariable LBluespecSystemVerilog">
  <div class="CTitle">free_ptr</div>
- <div id="NDPrototype130" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="3" data-NarrowColumnCount="2"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/3" style="grid-area:1/1/2/2">Reg#(</div><div class="PName InFirstParameterColumn InLastParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">Tag</div><div class="PAfterParameters" data-WideGridArea="1/3/2/4" data-NarrowGridArea="3/1/4/3" style="grid-area:1/3/2/4">) free_ptr &lt;- mkReg(fromInteger(kNumArchRegs))</div></div></div></div>
+ <div id="NDPrototype136" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="3" data-NarrowColumnCount="2"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/3" style="grid-area:1/1/2/2">Reg#(</div><div class="PName InFirstParameterColumn InLastParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">Tag</div><div class="PAfterParameters" data-WideGridArea="1/3/2/4" data-NarrowGridArea="3/1/4/3" style="grid-area:1/3/2/4">) free_ptr &lt;- mkReg(fromInteger(kNumArchRegs))</div></div></div></div>
  <div class="CBody"><p>Free pointer indicates the next free entry, initially points to the first free entry.</p></div>
 </div>
 
-<a name="mkOboeFreeList.null_ptr"></a><a name="Topic131"></a><div class="CTopic TVariable LBluespecSystemVerilog">
+<a name="mkOboeFreeList.null_ptr"></a><a name="Topic137"></a><div class="CTopic TVariable LBluespecSystemVerilog">
  <div class="CTitle">null_ptr</div>
- <div id="NDPrototype131" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="3" data-NarrowColumnCount="2"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/3" style="grid-area:1/1/2/2">Reg#(</div><div class="PName InFirstParameterColumn InLastParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">Tag</div><div class="PAfterParameters" data-WideGridArea="1/3/2/4" data-NarrowGridArea="3/1/4/3" style="grid-area:1/3/2/4">) null_ptr &lt;- mkReg(fromInteger(kNumPhysicalRegs - <span class="SHNumber">1</span>))</div></div></div></div>
+ <div id="NDPrototype137" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="3" data-NarrowColumnCount="2"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/3" style="grid-area:1/1/2/2">Reg#(</div><div class="PName InFirstParameterColumn InLastParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">Tag</div><div class="PAfterParameters" data-WideGridArea="1/3/2/4" data-NarrowGridArea="3/1/4/3" style="grid-area:1/3/2/4">) null_ptr &lt;- mkReg(fromInteger(kNumPhysicalRegs - <span class="SHNumber">1</span>))</div></div></div></div>
  <div class="CBody"><p>Null pointer indicates the last free entry, initially points to the last entry.</p></div>
 </div>
 
-<a name="mkOboeFreeList.is_full"></a><a name="Topic132"></a><div class="CTopic TVariable LBluespecSystemVerilog last">
+<a name="mkOboeFreeList.is_full"></a><a name="Topic138"></a><div class="CTopic TVariable LBluespecSystemVerilog last">
  <div class="CTitle">is_full</div>
- <div id="NDPrototype132" class="NDPrototype"><div class="PSection PPlainSection">Bool is_full = free_ptr == null_ptr</div></div>
- <div class="CBody"><p>Entries are used up when <a href="../index.html#File:OboeFreeList.bsv:mkOboeFreeList.free_ptr" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,130);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >free_ptr</a> reaches <a href="../index.html#File:OboeFreeList.bsv:mkOboeFreeList.null_ptr" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,131);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >null_ptr</a>.</p></div>
+ <div id="NDPrototype138" class="NDPrototype"><div class="PSection PPlainSection">Bool is_full = free_ptr == null_ptr</div></div>
+ <div class="CBody"><p>Entries are used up when <a href="../index.html#File:OboeFreeList.bsv:mkOboeFreeList.free_ptr" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,136);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >free_ptr</a> reaches <a href="../index.html#File:OboeFreeList.bsv:mkOboeFreeList.null_ptr" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,137);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >null_ptr</a>.</p></div>
 </div>
 
 </body></html>

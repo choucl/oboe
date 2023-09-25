@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("all",["Method"],[["allocate",,[["OboeFreeList",,,,0,"File:OboeFreeList.bsv:OboeFreeList.allocate","BluespecSystemVerilogClass:OboeFreeList:allocate"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("all",["Method"],[["allocate",,[[,,,,0,"File:OboeFreeList.bsv:allocate"]]]]);
