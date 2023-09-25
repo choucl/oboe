@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("isi",["Function"],[["isInUse",,[["mkOboeFreeList",,,,0,"File:OboeFreeList.bsv:mkOboeFreeList.isInUse","BluespecSystemVerilogModule:mkOboeFreeList:isInUse"]]]]);

@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("nex",["Variable"],[["next",,[["mkOboeFreeList",,,,0,"File:OboeFreeList.bsv:mkOboeFreeList.next","BluespecSystemVerilogModule:mkOboeFreeList:next"]]]]);

@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("for",["Method"],[["forward",,[[,,,,0,"File:OboeArchitectureRegMap.bsv:forward"]]]]);

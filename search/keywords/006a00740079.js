@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("jty",["Type"],[["JType",,[[,,,,0,"File:OboeTypeDef.bsv:JType"]]]]);

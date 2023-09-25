@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("res",["Method"],[["restore",,[[,,,,0,"File:OboeFutureRegMap.bsv:restore"]]]]);

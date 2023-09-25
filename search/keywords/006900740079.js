@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("ity",["Type"],[["IType",,[[,,,,0,"File:OboeTypeDef.bsv:IType"]]]]);

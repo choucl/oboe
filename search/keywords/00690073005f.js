@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("is_",["Variable"],[["is_full",,[["mkOboeFreeList",,,,0,"File:OboeFreeList.bsv:mkOboeFreeList.is_full","BluespecSystemVerilogModule:mkOboeFreeList:is_full"]]]]);

@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("bru",["Type","Enumeration"],[["BruCtrl",,[[,,,,0,"File:OboeTypeDef.bsv:BruCtrl"]]],["BruOp",,[[,,,,1,"File:OboeTypeDef.bsv:BruOp"]]],["BruSrc",,[[,,,,1,"File:OboeTypeDef.bsv:BruSrc"]]]]);

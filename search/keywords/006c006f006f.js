@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("loo",["Method"],[["lookup",,[[,,,,0,"File:OboeFutureRegMap.bsv:lookup"]]]]);

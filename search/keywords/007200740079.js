@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("rty",["Type"],[["RType",,[[,,,,0,"File:OboeTypeDef.bsv:RType"]]]]);

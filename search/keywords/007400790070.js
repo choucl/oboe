@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("typ",["Section"],[["type",,[[,"Microarchitecture type definitions",,,0,"File:OboeTypeDef.bsv:Microarchitecture_type_definitions"]]]]);
