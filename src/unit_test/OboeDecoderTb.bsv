@@ -26,13 +26,11 @@ module mkOboeDecoderTb();
                               opcode: opcode_jal}));
   endfunction
 
-  function Action test_instruction(RawInst inst);
-    return 
+  function Action test_instruction(RawInst inst) = 
       action
         BackendInst bi = dec.decode(inst, ?);
         $display(fshow(bi));
       endaction;
-  endfunction
 
   mkAutoFSM(
     seq
