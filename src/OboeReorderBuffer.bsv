@@ -15,6 +15,7 @@ import OboeFreeList::*;
 typedef struct {
   Word      pc;
   ArchRegId rd;
+  Maybe#(TrapCause) trap;
 } RobEntry deriving(Bits);
 
 // Interface: OboeReorderBuffer
@@ -25,8 +26,8 @@ interface OboeReorderBuffer;
   //   <OboeFreeList> is able to allocate an entry for the instruction.
   //
   // Parameter:
-  //   inst - Instruction to insert into the ROB.
-  method Action insert(BackendInst inst);
+  //   entry - Instruction to insert into the ROB.
+  method Action insert(RobEntry entry);
   // Method: renameRequest
   //   ROB issues a rename request from the ROB when the <BackendInst> coming in is valid and an
   //   entry is successfully allocated.
@@ -145,16 +146,12 @@ module mkOboeReorderBuffer (OboeReorderBuffer);
     return wb_port;
   endfunction
 
-  method Action insert(BackendInst inst);
+  method Action insert(RobEntry entry);
     // Try to allocate an entry for the inst.
     Tag free <- freelist.allocate();
-    RobEntry entry = RobEntry {
-      pc: inst.pc,
-      rd: inst.rd
-    };
     writeEntry(free, entry);
     // Send the rename request.
-    rename_request <= tuple2(inst.rd, free);
+    rename_request <= tuple2(entry.rd, free);
   endmethod
 
   method Tuple2#(ArchRegId, Tag) renameRequest() = rename_request;
